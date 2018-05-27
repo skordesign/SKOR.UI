@@ -11,6 +11,10 @@ Controls.Test/Controls.Test/obj/
 Controls.Test/Controls.Test.Android/bin/
 Controls.Test/Controls.Test.Android/obj/
 Controls.Test/Controls.Test.iOS/bin/
-Controls.Test/Controls.Test/iOS/obj/
+Controls.Test/Controls.Test.iOS/obj/
 Controls.Test/Controls.Test.UWP/
 .vs/
+/Controls.Test.UWP/bin/x86/Debug
+/Controls.Test.UWP/obj
+/Controls.UWP/bin
+/Controls.UWP/obj

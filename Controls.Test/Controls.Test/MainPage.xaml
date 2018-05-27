@@ -6,6 +6,7 @@
              x:Class="Controls.Test.MainPage">
 
     <StackLayout Padding="32">
+        <Label Text="Android" HorizontalOptions="Center"/>
         <controls:GradientButton Text="JShine"
                                  HorizontalOptions="FillAndExpand"
                                  HeightRequest="48"

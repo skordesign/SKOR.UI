@@ -1,0 +1,22 @@
+﻿<forms:WindowsPage x:Class="Controls.Test.UWP.MainPage"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:forms="using:Xamarin.Forms.Platform.UWP"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:local="using:Controls.Test.UWP"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   mc:Ignorable="d">
+
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Button Height="50" Content="Hello" HorizontalAlignment="Center" Width="200">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1"
+                                     StartPoint="1,1">
+                    <GradientStop Color="#12c2e9" />
+                    <GradientStop Color="#f64f59"
+                                  Offset="1" />
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+    </StackPanel>
+</forms:WindowsPage>
