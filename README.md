@@ -14,6 +14,8 @@ Add new line before LoadApplication in AppDelegate
 ```csharp
 Skor.Controls.Droid.Controls.Init();
 ```
+## Notes
+Image will use drawable at Android platform and Resources at iOS platform.
 ## Example
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
