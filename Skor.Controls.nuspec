@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Skor.Controls</id>
+    <version>0.0.1-alpha</version>
+    <title>Skor.UI</title>
+    <authors>PhatHuynh</authors>
+    <owners>PhatHuynh</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>UI Controls for Xamarin.Forms</description>
+    <releaseNotes>
+      Skor.UI:
+      - Add GradientButton (with Image layer overlay)
+      - Add GradientFrame (WIP)
+    </releaseNotes>
+    <copyright>Copyright 2018</copyright>
+    <tags>Skor XamUI Xamarin.Forms Controls</tags>
+    <dependencies>
+      <dependency id="Xamarin.Forms" version="3.0.0.482510" />
+    </dependencies>
+    <!--<dependencies>
+       <group targetFramework="MonoAndroid">
+        MonoAndroid dependencies go here
+      </group>
+      <group targetFramework="Xamarin.iOS10">
+        Xamarin.iOS10 dependencies go here
+      </group>
+    </dependencies> -->
+  </metadata>
+  <files>
+    <!-- Cross-platform reference assemblies -->
+    <file src="Controls\bin\Release\netstandard2.0\Skor.Controls.dll" target="lib\netstandard2.0\Skor.Controls.dll" />
+
+    <!-- iOS reference assemblies -->
+    <file src="Controls.iOS\bin\Release\Skor.Controls.iOS.dll" target="lib\Xamarin.iOS10\Skor.Controls.iOS.dll" />
+    <file src="Controls\bin\Release\netstandard2.0\Skor.Controls.dll" target="lib\Xamarin.iOS10\Skor.Controls.dll" />
+
+    <!-- Android reference assemblies -->
+    <file src="Controls.Droid\bin\Release\Skor.Controls.Droid.dll" target="lib\MonoAndroid10\Skor.Controls.Droid.dll" />
+    <file src="Controls\bin\Release\netstandard2.0\Skor.Controls.dll" target="lib\MonoAndroid10\Skor.Controls.dll" />
+  </files>
+</package>
