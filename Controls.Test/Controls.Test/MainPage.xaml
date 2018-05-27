@@ -6,7 +6,12 @@
              x:Class="Controls.Test.MainPage">
 
     <StackLayout Padding="32">
-        <Label Text="Android" HorizontalOptions="Center"/>
+        <Label Text="UWP"
+               HorizontalOptions="Center">
+            <Label.Text>
+                <OnPlatform x:TypeArguments="x:String" Android="Android" WinPhone="Windows"></OnPlatform>
+            </Label.Text>
+        </Label>
         <controls:GradientButton Text="JShine"
                                  HorizontalOptions="FillAndExpand"
                                  HeightRequest="48"

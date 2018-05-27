@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Skor.Controls</id>
-    <version>0.0.1-alpha</version>
+    <version>0.0.1-alpha2</version>
     <title>Skor.UI</title>
     <authors>PhatHuynh</authors>
     <owners>PhatHuynh</owners>
@@ -12,6 +12,8 @@
       Skor.UI:
       - Add GradientButton (with Image layer overlay)
       - Add GradientFrame (WIP)
+      [0.0.1-alpha2]:
+      - GradientButton support UWP now (but without Image and Corner, it will be updating soon).
     </releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>Skor XamUI Xamarin.Forms Controls</tags>
@@ -38,5 +40,9 @@
     <!-- Android reference assemblies -->
     <file src="Controls.Droid\bin\Release\Skor.Controls.Droid.dll" target="lib\MonoAndroid10\Skor.Controls.Droid.dll" />
     <file src="Controls\bin\Release\netstandard2.0\Skor.Controls.dll" target="lib\MonoAndroid10\Skor.Controls.dll" />
+  
+<!-- Android reference assemblies -->
+    <file src="Controls.UWP\bin\Release\Skor.Controls.UWP.dll" target="lib\UAP10\Skor.Controls.UWP.dll" />
+    <file src="Controls\bin\Release\netstandard2.0\Skor.Controls.dll" target="lib\UAP10\Skor.Controls.dll" />
   </files>
 </package>
