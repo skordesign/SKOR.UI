@@ -1,5 +1,6 @@
 ![alt text](https://github.com/skordesign/SKOR.UI/blob/master/Demo/Android.PNG "Android")
 ![alt text](https://github.com/skordesign/SKOR.UI/blob/master/Demo/iOS.PNG "iOS")
+![alt text](https://github.com/skordesign/SKOR.UI/blob/master/Demo/Windows.PNG "Universal Windows Platform")
 # SKOR.UI
 UI Controls for Xamarin.Forms
 # Usage
@@ -15,6 +16,11 @@ Skor.Controls.Droid.Controls.Init();
 Add new line before LoadApplication in AppDelegate
 ```csharp
 Skor.Controls.Droid.Controls.Init();
+```
+## iOS
+Add new line after Xamarin.Forms.Init() in App
+```csharp
+Skor.Controls.UWP.Controls.Init();
 ```
 ## Notes
 Image will use drawable at Android platform and Resources at iOS platform.
