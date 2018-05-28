@@ -17,7 +17,7 @@ Add new line before LoadApplication in AppDelegate
 ```csharp
 Skor.Controls.Droid.Controls.Init();
 ```
-## iOS
+## UWP
 Add new line after Xamarin.Forms.Init() in App
 ```csharp
 Skor.Controls.UWP.Controls.Init();
