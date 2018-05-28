@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <SelectedDevice>iPhone 6s Plus iOS 11.3</SelectedDevice>
+    <SelectedDevice>Device</SelectedDevice>
     <DefaultDevice>iPhone 6s Plus iOS 11.3</DefaultDevice>
     <DeveloperId />
     <DevelopmentTeamId />

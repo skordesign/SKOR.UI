@@ -60,6 +60,7 @@
     <Compile Include="Extensions\AngleExtension.cs" />
     <Compile Include="Extensions\BackgroundExtension.cs" />
     <Compile Include="GradientButtonRenderer.cs" />
+    <Compile Include="GradientFrameRenderer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

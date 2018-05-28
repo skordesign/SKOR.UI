@@ -8,7 +8,19 @@
                    mc:Ignorable="d">
 
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button Height="50" Content="Hello" HorizontalAlignment="Center" Width="200">
+        <Button Height="50" Padding="0" HorizontalAlignment="Center" Width="200">
+            <Grid>
+                <Rectangle Height="50"
+                           Width="200"
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch"
+                           Margin="0"
+                           Opacity="0.4">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="ms-appx:///Assets/test.jpg" />
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1"
                                      StartPoint="1,1">
