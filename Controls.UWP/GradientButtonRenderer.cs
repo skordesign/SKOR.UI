@@ -14,7 +14,7 @@ using Xamarin.Forms.Platform.UWP;
 [assembly: ExportRenderer(typeof(GradientButton), typeof(GradientButtonRenderer))]
 namespace Skor.Controls.UWP
 {
-    public class GradientButtonRenderer: ViewRenderer<GradientButton, Button>
+    public class GradientButtonRenderer : ViewRenderer<GradientButton, Button>
     {
         private const int DEFAULT_HEIGHT = 40;
         private const int DEFAULT_WIDTH = 100;
@@ -34,15 +34,15 @@ namespace Skor.Controls.UWP
             };
             nButton.Loaded += this.NButton_Loaded;
             nButton.Click += (s, ev) => { ((IGradientButtonController)button).SendClicked(); };
-            nButton.Holding+= (s,ev)=> { ((IGradientButtonController)button).SendLongClick(); };
+            nButton.Holding += (s, ev) => { ((IGradientButtonController)button).SendLongClick(); };
             SetNativeControl(nButton);
         }
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
-            if(e.PropertyName=="Height" || e.PropertyName == "Width" || e.PropertyName=="Image")
+            if (e.PropertyName == "Height" || e.PropertyName == "Width" || e.PropertyName == "Image")
             {
-               if(button.Image!=null && !string.IsNullOrEmpty(button.Image.File))
+                if (button.Image != null && !string.IsNullOrEmpty(button.Image.File))
                 {
                     RenderImage();
                 }

@@ -1,10 +1,12 @@
 ﻿using Skor.Controls.Abstractions;
 using System;
+using System.Collections.Generic;
+using System.Text;
 using Xamarin.Forms;
 
 namespace Skor.Controls
 {
-    public class GradientButton : GradientView, IGradientButtonController
+    public class GradientTextButton : GradientView, IGradientButtonController
     {
         public event EventHandler Clicked;
         public event EventHandler Pressed;
@@ -23,22 +25,12 @@ namespace Skor.Controls
         public static readonly BindableProperty TextProperty = BindableProperty.Create(
             nameof(Text),
             typeof(string),
-            typeof(GradientButton),
+            typeof(GradientTextButton),
             default(string));
         public string Text
         {
             get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
-        }
-        public static readonly BindableProperty TextColorProperty = BindableProperty.Create(
-            nameof(TextColor),
-            typeof(Color),
-            typeof(GradientButton),
-            Color.Gray);
-        public Color TextColor
-        {
-            get { return (Color)GetValue(TextColorProperty); }
-            set { SetValue(TextColorProperty, value); }
         }
         public static readonly BindableProperty CommandProperty = BindableProperty.Create(
             nameof(Command),
@@ -80,16 +72,6 @@ namespace Skor.Controls
             get { return GetValue(LongClickCommandParameterProperty); }
             set { SetValue(LongClickCommandParameterProperty, value); }
         }
-        public static readonly BindableProperty ImageProperty = BindableProperty.Create(
-         nameof(Image),
-         typeof(FileImageSource),
-         typeof(GradientButton),
-         default(FileImageSource));
-        public FileImageSource Image
-        {
-            get { return (FileImageSource)GetValue(ImageProperty); }
-            set { SetValue(ImageProperty, value); }
-        }
         public void SendClicked()
         {
             Clicked?.Invoke(this, new EventArgs());
@@ -111,7 +93,7 @@ namespace Skor.Controls
 
         public void SendLongClick()
         {
-            LongClicked?.Invoke(this,new EventArgs());
+            LongClicked?.Invoke(this, new EventArgs());
             if (LongClickCommand != null && LongClickCommand.CanExecute(null))
             {
                 LongClickCommand.Execute(LongClickCommandParameter);

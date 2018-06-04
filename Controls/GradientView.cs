@@ -48,17 +48,6 @@ namespace Skor.Controls
             get { return (AngleGradient)GetValue(AngleProperty); }
             set { SetValue(AngleProperty, value); }
         }
-        public static readonly BindableProperty ImageProperty = BindableProperty.Create(
-            nameof(Image),
-            typeof(FileImageSource),
-            typeof(GradientView),
-            default(FileImageSource));
-        public FileImageSource Image
-        {
-            get { return (FileImageSource)GetValue(ImageProperty); }
-            set { SetValue(ImageProperty, value); }
-        }
-       
     }
     public enum AngleGradient
     {

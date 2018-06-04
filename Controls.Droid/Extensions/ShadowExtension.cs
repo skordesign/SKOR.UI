@@ -43,13 +43,13 @@ namespace Skor.Controls.Droid.Extensions
         {
             var gradient = new GradientDrawable
             {
-                Alpha = 40
+                Alpha = 10
             };
             gradient.SetShape(ShapeType.Rectangle);
             gradient.SetGradientType(GradientType.RadialGradient);
             gradient.SetOrientation(GradientDrawable.Orientation.TopBottom);
             gradient.SetCornerRadius(btn.CornerRadius+4);
-            gradient.SetColors(new int[] { btn.StartColor.ToAndroid(), Color.Gray});
+            gradient.SetColors(new int[] { btn.StartColor.ToAndroid(), btn.EndColor.ToAndroid() });
             //gradient.SetGradientRadius(400);
             return gradient;
         }

@@ -135,6 +135,7 @@
     <Compile Include="Extensions\BitmapExtension.cs" />
     <Compile Include="GradientButtonRenderer.cs" />
     <Compile Include="GradientFrameRenderer.cs" />
+    <Compile Include="GradientTextButtonRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions\RippleExtension.cs" />

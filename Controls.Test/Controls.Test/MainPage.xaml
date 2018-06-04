@@ -5,9 +5,7 @@
              xmlns:controls="clr-namespace:Skor.Controls;assembly=Skor.Controls"
              x:Class="Controls.Test.MainPage">
 
-    <controls:GradientFrame StartColor="#e96443"
-                            EndColor="#904e95"
-                            Angle="TopBottom"> 
+    <controls:GradientFrame > 
         <StackLayout Padding="32">
             <Label Text="UWP"
                    HorizontalOptions="Center">
@@ -17,6 +15,20 @@
                                 WinPhone="Windows"></OnPlatform>
                 </Label.Text>
             </Label>
+            <Button Text="AppCompat"></Button>
+            <controls:GradientTextButton BackgroundColor="White"
+                                         StartColor="#12c2e9"
+                                         Text="TextGradient"
+                                         HeightRequest="48"
+                                         CenterColor="#c471ed"
+                                         EndColor="#f64f59" />
+            <controls:GradientTextButton BackgroundColor="White"
+                                         StartColor="#2980B9"
+                                         IsEnabled="False"
+                                         Text="TextGradient"
+                                         HeightRequest="48"
+                                         CenterColor="#c471ed"
+                                         EndColor="#f64f59" />
             <controls:GradientButton Text="JShine"
                                      HorizontalOptions="FillAndExpand"
                                      HeightRequest="48"

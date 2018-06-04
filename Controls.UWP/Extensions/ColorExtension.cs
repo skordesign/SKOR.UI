@@ -10,7 +10,14 @@ namespace Skor.Controls.UWP.Extensions
     {
         public static Windows.UI.Color ToWindows(this Xamarin.Forms.Color color)
         {
-            return Windows.UI.Color.FromArgb(Convert.ToByte(color.A * 255), Convert.ToByte(color.R * 255), Convert.ToByte(color.G * 255), Convert.ToByte(color.B * 255));
+            try
+            {
+                return Windows.UI.Color.FromArgb(Convert.ToByte(color.A * 255), Convert.ToByte(color.R * 255), Convert.ToByte(color.G * 255), Convert.ToByte(color.B * 255));
+            }
+            catch
+            {
+                return Windows.UI.Colors.White;
+            }
         }
     }
 }

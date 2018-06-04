@@ -1,4 +1,5 @@
 ﻿using Android.Content;
+using Android.Support.V4.View;
 using Android.Widget;
 using Skor.Controls.Abstractions;
 using Skor.Controls.Droid.Extensions;
@@ -7,11 +8,11 @@ using Xamarin.Forms.Platform.Android;
 [assembly: ExportRenderer(typeof(global::Skor.Controls.GradientButton), typeof(global::Skor.Controls.Droid.GradientButtonRenderer))]
 namespace Skor.Controls.Droid
 {
-    public class GradientButtonRenderer: ViewRenderer<global::Skor.Controls.GradientButton, FrameLayout>
+    public class GradientButtonRenderer: Xamarin.Forms.Platform.Android.AppCompat.ViewRenderer<global::Skor.Controls.GradientButton, FrameLayout>
     {
         private const int DEFAULT_HEIGHT_BUTTON = 72;
-        private ImageView nShadow;
-        private Android.Widget.Button nButton;
+        private Android.Support.V7.Widget.AppCompatImageView nShadow;
+        private Android.Support.V7.Widget.AppCompatButton nButton;
         private global::Skor.Controls.GradientButton button;
         private FrameLayout frame;
         public GradientButtonRenderer(Context context):base(context)
@@ -24,15 +25,15 @@ namespace Skor.Controls.Droid
             this.button.HeightRequest = this.button.HeightRequest != -1 ? this.button.HeightRequest : DEFAULT_HEIGHT_BUTTON;
             frame = new FrameLayout(Context);
             frame.LayoutParameters = new FrameLayout.LayoutParams((int)button.WidthRequest, (int)button.HeightRequest);
-            nButton = new Android.Widget.Button(Context);
+            nButton = new Android.Support.V7.Widget.AppCompatButton(Context);
             nButton.Text = button.Text;
             nButton.SetTextColor(button.TextColor.ToAndroid());
             var nBtnLayout = new FrameLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent);
-            nBtnLayout.SetMargins(16, 16, 16, 16);
+            nBtnLayout.SetMargins(24, 0, 24, 24);
             nButton.LayoutParameters = nBtnLayout;
-            nShadow = new ImageView(Context);
+            nShadow = new Android.Support.V7.Widget.AppCompatImageView(Context);
             var nShadowLayout = new FrameLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent);
-            nShadowLayout.SetMargins(4, 16, 8, 8);
+            nShadowLayout.SetMargins(12, 16, 12, 2);
             nShadow.LayoutParameters = nShadowLayout;
             nButton.SetBackgroundGradientForButton(button);
             if (button.Image!=null && !string.IsNullOrEmpty(button.Image.File))
@@ -41,19 +42,17 @@ namespace Skor.Controls.Droid
             }
             nButton.AddRipple(Android.Graphics.Color.Gray);
             nButton.SetAllParentsClip(false);
-            //nButton.StateListAnimator = null;
+            nButton.StateListAnimator = new Android.Animation.StateListAnimator();
             nShadow.Background = ShadowExtension.AddShadowToButton(button);
-            nShadow.Elevation = 48;
-            nShadow.TranslationZ = 48;
             nButton.Click += (s, ev) =>
             {
-                ((IGradientButtonController)button).SendClicked();
+                ((IGradientButtonController)button).SendClicked(); 
             };
             nButton.LongClick += (s, ev) =>
             {
                 ((IGradientButtonController)button).SendLongClick();
             };
-            frame.AddView(nShadow);
+            //frame.AddView(nShadow);
             frame.AddView(nButton);
             SetNativeControl(this.frame);
         }

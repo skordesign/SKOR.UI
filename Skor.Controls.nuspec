@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Skor.Controls</id>
-    <version>0.0.1-alpha2</version>
+    <version>0.0.1-alpha3</version>
     <title>Skor.UI</title>
     <authors>PhatHuynh</authors>
     <owners>PhatHuynh</owners>
@@ -14,6 +14,9 @@
       - Add GradientFrame (WIP)
       [0.0.1-alpha2]:
       - GradientButton support UWP now (but without Image and Corner, it will be updating soon).
+      [0.0.1-alpha3]:
+      - GradientButton fully supported UWP now.
+      - GradientFrame Android and UWP (iOS is comming soon).
     </releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>Skor XamUI Xamarin.Forms Controls</tags>
