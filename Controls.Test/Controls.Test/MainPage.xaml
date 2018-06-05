@@ -16,7 +16,7 @@
                                 WinPhone="Windows"></OnPlatform>
                 </Label.Text>
             </Label>
-            <!--<controls:GradientTextButton BackgroundColor="White"
+            <controls:GradientTextButton BackgroundColor="White"
                                          StartColor="#12c2e9"
                                          Text="TextGradient"
                                          HeightRequest="48"
@@ -28,7 +28,7 @@
                                          Text="TextGradient"
                                          HeightRequest="48"
                                          CenterColor="#c471ed"
-                                         EndColor="#f64f59" />-->
+                                         EndColor="#f64f59" />
             <controls:GradientButton Text="JShine"
                                      HorizontalOptions="FillAndExpand"
                                      HeightRequest="48"
