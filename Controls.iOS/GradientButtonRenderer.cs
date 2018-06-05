@@ -25,7 +25,7 @@ namespace Skor.Controls.iOS
         {
             base.OnElementChanged(e);
             button = e.NewElement as GradientButton;
-            nButton = new UIButton(UIButtonType.Custom);
+            nButton = new UIButton(UIButtonType.System);
             nButton.TranslatesAutoresizingMaskIntoConstraints = true;
             nButton.Frame = new CGRect(0, 0, button.WidthRequest!=-1?button.WidthRequest:DEFAULT_WIDTH, 
                 button.HeightRequest>30?button.HeightRequest:DEFAULT_HEIGHT);
@@ -38,7 +38,6 @@ namespace Skor.Controls.iOS
             var longPress = new UILongPressGestureRecognizer();
             longPress.AddTarget(() => ((IGradientButtonController)button).SendLongClick());
             nButton.GestureRecognizers = new UIGestureRecognizer[] { longPress };
-
             SetNativeControl(nButton);
         }
         void Handler(object sender, EventArgs e)

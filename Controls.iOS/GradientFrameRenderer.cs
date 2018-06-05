@@ -37,7 +37,7 @@ namespace Skor.Controls.iOS
                 if (frame.Image != null && frame.Image.File.Length > 0)
                 {
                     var background = BackgroundExtension.CreateBackgroundImage((float)frame.Height, (float)frame.Width, frame.CornerRadius, frame.Image.File);
-                    Layer.InsertSublayer(background, 1);
+                    Layer.InsertSublayer(background, 0);
                 }
             }
         }

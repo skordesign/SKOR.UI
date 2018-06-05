@@ -8,6 +8,7 @@ using Android.Content;
 using Android.Content.Res;
 using Android.Graphics;
 using Android.Graphics.Drawables;
+using Android.Graphics.Drawables.Shapes;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -39,19 +40,57 @@ namespace Skor.Controls.Droid.Extensions
             //layer.SetLayerInset(1, 0, 0, 0, -50);
             view.Background = layer;
         }
-        public static Drawable AddShadowToButton(global::Skor.Controls.GradientButton btn=null, bool click=false)
+        public static Drawable AddShadowToButton(global::Skor.Controls.GradientButton btn = null, bool click = false)
         {
             var gradient = new GradientDrawable
             {
-                Alpha = 10
+                Alpha = 40
             };
             gradient.SetShape(ShapeType.Rectangle);
             gradient.SetGradientType(GradientType.RadialGradient);
             gradient.SetOrientation(GradientDrawable.Orientation.TopBottom);
-            gradient.SetCornerRadius(btn.CornerRadius+4);
+            gradient.SetCornerRadius(btn.CornerRadius + 4);
             gradient.SetColors(new int[] { btn.StartColor.ToAndroid(), btn.EndColor.ToAndroid() });
+            var layer = new LayerDrawable(new Drawable[] { gradient });
             //gradient.SetGradientRadius(400);
-            return gradient;
+            layer.SetLayerInset(0, 24, 24, 24, 24);
+            return layer;
+        }
+        public static Drawable CreateShadow(View view)
+        {
+            int elevationValue = 10;
+            Rect shapeDrawablePadding = new Rect();
+            shapeDrawablePadding.Left = elevationValue;
+            shapeDrawablePadding.Right = elevationValue;
+            shapeDrawablePadding.Top = elevationValue;
+            shapeDrawablePadding.Bottom = elevationValue;
+            int DY = 0;
+
+            ShapeDrawable shapeDrawable = new ShapeDrawable();
+            shapeDrawable.SetPadding(shapeDrawablePadding);
+
+
+            shapeDrawable.Paint.Color = Color.Red;
+
+            shapeDrawable.Paint.SetShadowLayer(12 / 3, 0, DY, Color.Red);
+
+
+
+            view.SetLayerType(LayerType.Software, shapeDrawable.Paint);
+
+
+
+            shapeDrawable.Shape = new RoundRectShape(new float[] { 12, 12, 12, 12, 12, 12, 12, 12 }, null, null);
+
+
+
+            LayerDrawable drawable = new LayerDrawable(new Drawable[] { shapeDrawable });
+
+            drawable.SetLayerInset(0, elevationValue, elevationValue * 2, elevationValue, elevationValue * 2);
+            drawable.SetAlpha(40);
+
+
+            return drawable;
         }
     }
 }

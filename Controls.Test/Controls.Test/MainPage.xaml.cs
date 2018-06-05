@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Skor.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,5 +14,7 @@ namespace Controls.Test
 		{
 			InitializeComponent();
 		}
-	}
+        
+        
+    }
 }

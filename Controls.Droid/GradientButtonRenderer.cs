@@ -1,4 +1,6 @@
-﻿using Android.Content;
+﻿using System.ComponentModel;
+using Android.Animation;
+using Android.Content;
 using Android.Support.V4.View;
 using Android.Widget;
 using Skor.Controls.Abstractions;
@@ -10,8 +12,7 @@ namespace Skor.Controls.Droid
 {
     public class GradientButtonRenderer: Xamarin.Forms.Platform.Android.AppCompat.ViewRenderer<global::Skor.Controls.GradientButton, FrameLayout>
     {
-        private const int DEFAULT_HEIGHT_BUTTON = 72;
-        private Android.Support.V7.Widget.AppCompatImageView nShadow;
+        private const int DEFAULT_HEIGHT_BUTTON = 96;
         private Android.Support.V7.Widget.AppCompatButton nButton;
         private global::Skor.Controls.GradientButton button;
         private FrameLayout frame;
@@ -29,21 +30,16 @@ namespace Skor.Controls.Droid
             nButton.Text = button.Text;
             nButton.SetTextColor(button.TextColor.ToAndroid());
             var nBtnLayout = new FrameLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent);
-            nBtnLayout.SetMargins(24, 0, 24, 24);
+            nBtnLayout.SetMargins(24, 0, 24, 36);
             nButton.LayoutParameters = nBtnLayout;
-            nShadow = new Android.Support.V7.Widget.AppCompatImageView(Context);
-            var nShadowLayout = new FrameLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent);
-            nShadowLayout.SetMargins(12, 16, 12, 2);
-            nShadow.LayoutParameters = nShadowLayout;
             nButton.SetBackgroundGradientForButton(button);
             if (button.Image!=null && !string.IsNullOrEmpty(button.Image.File))
             {
                 nButton.SetBitmapToButton(button);
             }
-            nButton.AddRipple(Android.Graphics.Color.Gray);
+            nButton.AddRipple(Android.Graphics.Color.White);
             nButton.SetAllParentsClip(false);
-            nButton.StateListAnimator = new Android.Animation.StateListAnimator();
-            nShadow.Background = ShadowExtension.AddShadowToButton(button);
+            InitStateButton();
             nButton.Click += (s, ev) =>
             {
                 ((IGradientButtonController)button).SendClicked(); 
@@ -52,9 +48,39 @@ namespace Skor.Controls.Droid
             {
                 ((IGradientButtonController)button).SendLongClick();
             };
-            //frame.AddView(nShadow);
             frame.AddView(nButton);
             SetNativeControl(this.frame);
+        }
+        private void InitStateButton()
+        {
+            nButton.Enabled = button.IsEnabled;
+            if(!nButton.Enabled)
+            {
+                nButton.Background.SetAlpha(40);
+            }
+        }
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            base.OnElementPropertyChanged(sender, e);
+            if (e.PropertyName == "IsEnabled")
+            {
+                if (e.PropertyName == "IsEnabled")
+                {
+                    nButton.Enabled = button.IsEnabled;
+                    if (nButton.Enabled)
+                    {
+                        nButton.SetBackgroundGradientForButton(button);
+                        if (button.Image != null && !string.IsNullOrEmpty(button.Image.File))
+                        {
+                            nButton.SetBitmapToButton(button);
+                        }
+                    }
+                    else
+                    {
+                        nButton.Background.SetAlpha(40);
+                    }
+                }
+            }
         }
     }
 }

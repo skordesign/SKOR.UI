@@ -23,7 +23,7 @@ namespace Skor.Controls.Droid
                 Control.Background = BackgroundExtension.CreateBackgroundGradient(grid.StartColor.ToAndroid(),
                     grid.EndColor.ToAndroid(),
                     grid.CenterColor.ToAndroid(),
-                    0, grid.Angle.ToAndroid());
+                    grid.CornerRadius, grid.Angle.ToAndroid());
             }
         }
     }
