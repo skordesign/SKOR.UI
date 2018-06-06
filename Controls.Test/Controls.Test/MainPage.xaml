@@ -34,7 +34,6 @@
                                      HeightRequest="48"
                                      WidthRequest="100"
                                      TextColor="White"
-                                     IsEnabled="False"
                                      CornerRadius="12"
                                      Image="test.jpg"
                                      StartColor="#12c2e9"

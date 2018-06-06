@@ -15,6 +15,5 @@ namespace Controls.Test
 			InitializeComponent();
 		}
         
-        
     }
 }

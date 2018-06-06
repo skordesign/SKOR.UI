@@ -51,6 +51,10 @@ namespace Skor.Controls.Droid
             nShadowLayout.SetMargins(12, 16, 12, 2);
             nShadow.LayoutParameters = nShadowLayout;
             nButton.Background = CreateBackgroundButton();
+            if (!button.IsEnabled)
+            {
+                nButton.Background.SetAlpha(40);
+            }
             nButton.AddRipple(Android.Graphics.Color.Gray);
             nButton.SetAllParentsClip(false);
             //nButton.StateListAnimator = null;
@@ -74,6 +78,22 @@ namespace Skor.Controls.Droid
             {
                 nButton.Paint.SetShader(CreateGradient());
                // UpdateLayout();
+            }
+            base.OnElementPropertyChanged(sender, e);
+            if (e.PropertyName == "IsEnabled")
+            {
+                if (e.PropertyName == "IsEnabled")
+                {
+                    nButton.Enabled = button.IsEnabled;
+                    if (nButton.Enabled)
+                    {
+                        nButton.Background.SetAlpha(255);
+                    }
+                    else
+                    {
+                        nButton.Background.SetAlpha(40);
+                    }
+                }
             }
         }
         private Shader CreateGradient()

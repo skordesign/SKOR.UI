@@ -91,15 +91,15 @@ namespace Skor.Controls.Droid.Extensions
                 }
             }
         }
-        public static Drawable AddBitmapToView(View view, string image, int height, int width)
+        public static Drawable CreateBackgroundBitmap(string image, int height, int width, float cornerRadius)
         {
             var bitmap = Application.Context.Resources.GetBitmap(image);
             if (bitmap != null)
             {
+                width = (int)(bitmap.Width * height / bitmap.Height);
                 bitmap = Bitmap.CreateScaledBitmap(bitmap, width, height, false);
-                var bg = view.Background;
                 var dr = RoundedBitmapDrawableFactory.Create(Application.Context.Resources, bitmap);
-                dr.CornerRadius = ((GradientDrawable)bg).CornerRadius;
+                dr.CornerRadius = cornerRadius;
                 dr.SetAlpha(40);
                 return dr;
             }
