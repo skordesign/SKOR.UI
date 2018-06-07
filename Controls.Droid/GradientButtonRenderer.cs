@@ -5,6 +5,7 @@ using Android.Animation;
 using Android.Content;
 using Android.Graphics.Drawables;
 using Android.Support.V4.View;
+using Android.Support.V7.Widget;
 using Android.Widget;
 using Skor.Controls.Abstractions;
 using Skor.Controls.Droid.Extensions;
@@ -15,7 +16,7 @@ namespace Skor.Controls.Droid
 {
     public class GradientButtonRenderer : Xamarin.Forms.Platform.Android.AppCompat.ViewRenderer<global::Skor.Controls.GradientButton, FrameLayout>
     {
-        private const int DEFAULT_HEIGHT_BUTTON = 48;
+        private const int DEFAULT_HEIGHT_BUTTON = 56;
         private Android.Support.V7.Widget.AppCompatButton nButton;
         private global::Skor.Controls.GradientButton button;
         private FrameLayout frame;
@@ -26,7 +27,7 @@ namespace Skor.Controls.Droid
         {
             base.OnElementChanged(e);
             this.button = e.NewElement as global::Skor.Controls.GradientButton;
-            this.button.HeightRequest = this.button.HeightRequest != -1 ? this.button.HeightRequest : DEFAULT_HEIGHT_BUTTON;
+            this.button.HeightRequest = this.button.HeightRequest >= DEFAULT_HEIGHT_BUTTON ? this.button.HeightRequest : DEFAULT_HEIGHT_BUTTON;
             InitControls();
             InitStyleButton();
             nButton.Click += (s, ev) =>
@@ -47,7 +48,7 @@ namespace Skor.Controls.Droid
             frame.LayoutParameters = new FrameLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.WrapContent);
             nButton = new Android.Support.V7.Widget.AppCompatButton(Context);
             //Button
-            var nBtnLayout = new FrameLayout.LayoutParams(LayoutParams.MatchParent, (int)button.HeightRequest+24);
+            var nBtnLayout = new FrameLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent);
             nBtnLayout.SetMargins(8, 8, 8, 24);
             nButton.SetPadding(0, 0, 0, 0);
             nButton.LayoutParameters = nBtnLayout;

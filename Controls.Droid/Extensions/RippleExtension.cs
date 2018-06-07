@@ -28,16 +28,5 @@ namespace Skor.Controls.Droid.Extensions
             RippleDrawable rippleDrawable = new RippleDrawable(ColorStateList.ValueOf(rippleColor), background, background);
             view.Background = rippleDrawable;
         }
-        public static void SetAllParentsClip(this View view, bool enabled)
-        {
-            while (view.Parent != null && view.Parent is ViewGroup parent)
-            {
-                parent.SetClipChildren(enabled);
-                parent.SetClipToPadding(enabled);
-                parent.LayoutMode = ViewLayoutMode.OpticalBounds;
-                parent.SetPadding(10, 10, 10, 10);
-                view = parent;
-            }
-        }
     }
 }

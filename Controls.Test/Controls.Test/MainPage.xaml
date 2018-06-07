@@ -5,9 +5,12 @@
              xmlns:controls="clr-namespace:Skor.Controls;assembly=Skor.Controls"
              x:Class="Controls.Test.MainPage">
 
-    <controls:GradientFrame  
-                             Angle="TopBottom"> 
-        <StackLayout Padding="32">
+    <controls:GradientFrame   Image="test.jpg"
+                              StartColor="#12c2e9"
+                              CenterColor="#c471ed"
+                              EndColor="#f64f59"
+                              Angle="TopBottom">
+        <StackLayout >
             <Label HorizontalOptions="Center">
                 <Label.Text>
                     <OnPlatform x:TypeArguments="x:String"
@@ -34,9 +37,6 @@
                                          EndColor="#f64f59" />
             <controls:GradientButton Text="JShine"
                                      RippleColor="#12c2e9"
-                                     HorizontalOptions="FillAndExpand"
-                                     HeightRequest="48"
-                                     WidthRequest="100"
                                      TextColor="White"
                                      CornerRadius="12"
                                      Image="test.jpg"
