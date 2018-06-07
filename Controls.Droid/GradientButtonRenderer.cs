@@ -59,7 +59,6 @@ namespace Skor.Controls.Droid
 
             nButton.Background = CreateBackgroundForButton();
             nButton.AddRipple(Android.Graphics.Color.White);
-            //nButton.SetAllParentsClip(false);
             nButton.Enabled = button.IsEnabled;
         }
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)

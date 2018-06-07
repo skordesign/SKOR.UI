@@ -13,7 +13,7 @@ namespace Skor.Controls
         public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create(
            nameof(CornerRadius),
            typeof(float),
-           typeof(GradientView),
+           typeof(GradientButton),
            24.0f);
         public float CornerRadius
         {

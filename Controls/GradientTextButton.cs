@@ -12,10 +12,20 @@ namespace Skor.Controls
         public event EventHandler Pressed;
         public event EventHandler Released;
         public event EventHandler LongClicked;
+        public static readonly BindableProperty BorderWidthProperty = BindableProperty.Create(
+          nameof(BorderWidth),
+          typeof(float),
+          typeof(GradientTextButton),
+          24.0f);
+        public float BorderWidth
+        {
+            get { return (float)GetValue(BorderWidthProperty); }
+            set { SetValue(BorderWidthProperty, value); }
+        }
         public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create(
            nameof(CornerRadius),
            typeof(float),
-           typeof(GradientView),
+           typeof(GradientTextButton),
            24.0f);
         public float CornerRadius
         {
@@ -35,7 +45,7 @@ namespace Skor.Controls
         public static readonly BindableProperty CommandProperty = BindableProperty.Create(
             nameof(Command),
             typeof(Command),
-            typeof(GradientButton),
+            typeof(GradientTextButton),
             default(Command));
         public Command Command
         {
@@ -45,7 +55,7 @@ namespace Skor.Controls
         public static readonly BindableProperty CommandParameterProperty = BindableProperty.Create(
             nameof(CommandParameter),
             typeof(object),
-            typeof(GradientButton),
+            typeof(GradientTextButton),
             default(object));
         public object CommandParameter
         {
@@ -55,7 +65,7 @@ namespace Skor.Controls
         public static readonly BindableProperty LongClickCommandProperty = BindableProperty.Create(
             nameof(LongClickCommand),
             typeof(Command),
-            typeof(GradientButton),
+            typeof(GradientTextButton),
             default(Command));
         public Command LongClickCommand
         {
@@ -65,7 +75,7 @@ namespace Skor.Controls
         public static readonly BindableProperty LongClickCommandParameterProperty = BindableProperty.Create(
             nameof(LongClickCommandParameter),
             typeof(object),
-            typeof(GradientButton),
+            typeof(GradientTextButton),
             default(object));
         public object LongClickCommandParameter
         {
