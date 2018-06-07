@@ -14,12 +14,12 @@ namespace Skor.Controls
         public event EventHandler LongClicked;
         public static readonly BindableProperty BorderWidthProperty = BindableProperty.Create(
           nameof(BorderWidth),
-          typeof(float),
+          typeof(int),
           typeof(GradientTextButton),
-          24.0f);
-        public float BorderWidth
+          4);
+        public int BorderWidth
         {
-            get { return (float)GetValue(BorderWidthProperty); }
+            get { return (int)GetValue(BorderWidthProperty); }
             set { SetValue(BorderWidthProperty, value); }
         }
         public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create(

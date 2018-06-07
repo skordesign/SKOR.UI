@@ -27,7 +27,7 @@ namespace Skor.Controls.Droid
 
         }
         private Xamarin.Forms.Color backgroundColor;
-        private const int DEFAULT_HEIGHT_BUTTON = 96;
+        private const int DEFAULT_HEIGHT_BUTTON = 48;
         private Android.Support.V7.Widget.AppCompatButton nButton;
         private global::Skor.Controls.GradientTextButton button;
         private FrameLayout frame;
@@ -55,11 +55,12 @@ namespace Skor.Controls.Droid
         {
             //Layout
             frame = new FrameLayout(Context);
-            frame.LayoutParameters = new FrameLayout.LayoutParams((int)button.WidthRequest, (int)button.HeightRequest);
+            frame.LayoutParameters = new FrameLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.WrapContent);
             nButton = new Android.Support.V7.Widget.AppCompatButton(Context);
             //Button
-            var nBtnLayout = new FrameLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent);
-            nBtnLayout.SetMargins(24, 0, 24, 36);
+            var nBtnLayout = new FrameLayout.LayoutParams(LayoutParams.MatchParent, (int)button.HeightRequest + 24);
+            nBtnLayout.SetMargins(8, 8, 8, 24);
+            nButton.SetPadding(0, 0, 0, 0);
             nButton.LayoutParameters = nBtnLayout;
         }
         private void InitStyleButton()
@@ -67,7 +68,7 @@ namespace Skor.Controls.Droid
             nButton.Text = button.Text;
 
             nButton.Background = CreateBackgroundButton();
-            nButton.AddRipple(Android.Graphics.Color.White);
+            nButton.AddRipple(button.RippleColor.ToAndroid());
             nButton.Enabled = button.IsEnabled;
         }
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -112,7 +113,8 @@ namespace Skor.Controls.Droid
             var layer2Temp = BackgroundExtension.CreateBackgroundGradient(backgroundColor.ToAndroid(),
                 backgroundColor.ToAndroid(),
                 backgroundColor.ToAndroid(), button.CornerRadius, button.Angle.ToAndroid());
-            var layer2 = new InsetDrawable(layer2Temp, 4, 4, 4, 4);
+            int borderWidth = button.BorderWidth;
+            var layer2 = new InsetDrawable(layer2Temp, borderWidth, borderWidth, borderWidth, borderWidth);
             Drawable[] drawables = new Drawable[] { layer1, layer2 };
             Drawable[] drawablesDisabled = new Drawable[] { layer1Disabled, layer2 };
             LayerDrawable layer = new LayerDrawable(drawables);

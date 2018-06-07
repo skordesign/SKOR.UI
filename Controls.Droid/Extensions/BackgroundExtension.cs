@@ -46,51 +46,6 @@ namespace Skor.Controls.Droid.Extensions
             gradientDrawable.SetOrientation(orientation);
             return gradientDrawable;
         }
-        public static void SetBackgroundGradientForButton(this View view, global::Skor.Controls.GradientButton button)
-        {
-            GradientDrawable gradientDrawable = new GradientDrawable();
-            gradientDrawable.SetShape(ShapeType.Rectangle);
-            gradientDrawable.SetCornerRadius(button.CornerRadius);
-            if (button.CenterColor != Xamarin.Forms.Color.Transparent)
-            {
-                gradientDrawable.SetColors(new int[] { button.StartColor.ToAndroid(),
-                button.CenterColor.ToAndroid(),button.EndColor.ToAndroid() });
-            }
-            else
-            {
-                gradientDrawable.SetColors(new int[] {
-                        button.StartColor.ToAndroid(),button.EndColor.ToAndroid()});
-            }
-            gradientDrawable.SetGradientType(GradientType.LinearGradient);
-            gradientDrawable.SetOrientation(button.Angle.ToAndroid());
-            view.Background = gradientDrawable;
-        }
-        /// <summary>
-        /// Not working yet
-        /// </summary>
-        /// <param name="view"></param>
-        /// <param name="button"></param>
-        public static void SetBitmapToButton(this View view, global::Skor.Controls.GradientButton button)
-        {
-            if (button.Image != null && !string.IsNullOrEmpty(button.Image.File))
-            {
-                var bitmap = Application.Context.Resources.GetBitmap(button.Image);
-                if (bitmap != null)
-                {
-                    int height = (int)button.HeightRequest;
-                    int width = (int)(bitmap.Width * height / bitmap.Height);
-                    bitmap = Bitmap.CreateScaledBitmap(bitmap, width, height, false);
-                    var bg = view.Background;
-                    var dr = RoundedBitmapDrawableFactory.Create(Application.Context.Resources, bitmap);
-                    dr.CornerRadius = ((GradientDrawable)bg).CornerRadius;
-                    dr.SetAlpha(40);
-
-                    Drawable[] drawables = new Drawable[] { bg, dr };
-                    LayerDrawable layer = new LayerDrawable(drawables);
-                    view.Background = layer;
-                }
-            }
-        }
         public static Drawable CreateBackgroundBitmap(string image, int height, int width, float cornerRadius)
         {
             var bitmap = Application.Context.Resources.GetBitmap(image);

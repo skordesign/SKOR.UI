@@ -17,6 +17,16 @@ namespace Skor.Controls
             get { return (Color)GetValue(StartColorProperty); }
             set { SetValue(StartColorProperty, value); }
         }
+        public static readonly BindableProperty RippleColorProperty = BindableProperty.Create(
+              nameof(RippleColor),
+              typeof(Color),
+              typeof(GradientView),
+              Color.White);
+        public Color RippleColor
+        {
+            get { return (Color)GetValue(RippleColorProperty); }
+            set { SetValue(RippleColorProperty, value); }
+        }
         public static readonly BindableProperty EndColorProperty = BindableProperty.Create(
         nameof(EndColor),
         typeof(Color),

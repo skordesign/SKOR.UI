@@ -18,18 +18,22 @@
             </Label>
             <controls:GradientTextButton BackgroundColor="White"
                                          StartColor="#12c2e9"
+                                         Clicked="GradientTextButton_Clicked"
                                          Text="TextGradient"
                                          HeightRequest="48"
+                                         CornerRadius="0"
+                                         WidthRequest="100"
                                          CenterColor="#c471ed"
                                          EndColor="#f64f59" />
             <controls:GradientTextButton BackgroundColor="White"
+                                         Clicked="GradientTextButton_Clicked"
                                          StartColor="#2980B9"
-                                         IsEnabled="False"
                                          Text="TextGradient"
                                          HeightRequest="48"
                                          CenterColor="#c471ed"
                                          EndColor="#f64f59" />
             <controls:GradientButton Text="JShine"
+                                     RippleColor="#12c2e9"
                                      HorizontalOptions="FillAndExpand"
                                      HeightRequest="48"
                                      WidthRequest="100"

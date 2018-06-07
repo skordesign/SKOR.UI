@@ -25,13 +25,7 @@ namespace Skor.Controls.Droid.Extensions
         public static void AddRipple(this View view, Color rippleColor)
         {
             var background = view.Background;
-            ColorStateList colorStateList = new ColorStateList(
-                new int[][]
-                {
-                    new int[]{ Android.Resource.Attribute.StatePressed }
-                }, new int[] { rippleColor }
-                );
-            RippleDrawable rippleDrawable = new RippleDrawable(colorStateList, background, background);
+            RippleDrawable rippleDrawable = new RippleDrawable(ColorStateList.ValueOf(rippleColor), background, background);
             view.Background = rippleDrawable;
         }
         public static void SetAllParentsClip(this View view, bool enabled)

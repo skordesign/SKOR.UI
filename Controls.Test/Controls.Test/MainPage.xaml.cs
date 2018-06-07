@@ -14,6 +14,10 @@ namespace Controls.Test
 		{
 			InitializeComponent();
 		}
-        
+
+        private void GradientTextButton_Clicked(object sender, EventArgs e)
+        {
+            //(sender as GradientTextButton).IsEnabled = false;
+        }
     }
 }

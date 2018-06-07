@@ -34,7 +34,8 @@ namespace Skor.Controls.UWP
                 Content = button.Text,
                 Background = new SolidColorBrush(button.BackgroundColor.ToWindows()),
                 Foreground = linear,
-                BorderThickness = new Windows.UI.Xaml.Thickness(0, 0, 0, 0),
+                BorderBrush = linear,
+                BorderThickness = new Windows.UI.Xaml.Thickness(button.BorderWidth),
                 Padding = new Windows.UI.Xaml.Thickness(0, 0, 0, 0)
             };
             nButton.Click += (s, ev) => { ((IGradientButtonController)button).SendClicked(); };

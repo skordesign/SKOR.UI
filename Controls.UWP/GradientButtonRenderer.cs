@@ -75,7 +75,10 @@ namespace Skor.Controls.UWP
                 button.EndColor.ToWindows(),
                 button.CenterColor.ToWindows(),
                 button.Angle.ToWindows());
-            RenderImage();
+            if (button.Image != null && !string.IsNullOrEmpty(button.Image.File))
+            {
+                RenderImage();
+            }
         }
     }
 }
