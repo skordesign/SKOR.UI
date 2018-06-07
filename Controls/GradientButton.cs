@@ -14,7 +14,7 @@ namespace Skor.Controls
            nameof(CornerRadius),
            typeof(float),
            typeof(GradientButton),
-           24.0f);
+           0.0f);
         public float CornerRadius
         {
             get { return (float)GetValue(CornerRadiusProperty); }

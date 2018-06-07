@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Xamarin.Forms.Platform.UWP;
@@ -36,7 +37,7 @@ namespace Skor.Controls.UWP
                 Foreground = linear,
                 BorderBrush = linear,
                 BorderThickness = new Windows.UI.Xaml.Thickness(button.BorderWidth),
-                Padding = new Windows.UI.Xaml.Thickness(0, 0, 0, 0)
+                Style = Application.Current.Resources["ButtonRevealStyle"] as Style
             };
             nButton.Click += (s, ev) => { ((IGradientButtonController)button).SendClicked(); };
             nButton.Holding += (s, ev) => { ((IGradientButtonController)button).SendLongClick(); };

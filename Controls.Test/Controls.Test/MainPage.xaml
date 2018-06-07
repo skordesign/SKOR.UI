@@ -26,6 +26,7 @@
                                          HeightRequest="48"
                                          CornerRadius="0"
                                          WidthRequest="100"
+                                         IsEnabled="False"
                                          CenterColor="#c471ed"
                                          EndColor="#f64f59" />
             <controls:GradientTextButton BackgroundColor="White"
@@ -33,6 +34,7 @@
                                          StartColor="#2980B9"
                                          Text="TextGradient"
                                          HeightRequest="48"
+                                         RippleColor="#12c2e9"
                                          CenterColor="#c471ed"
                                          EndColor="#f64f59" />
             <controls:GradientButton Text="JShine"

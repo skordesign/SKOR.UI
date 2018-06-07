@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Skor.Controls</id>
-    <version>0.0.1-alpha4</version>
+    <version>0.0.1-alpha5</version>
     <title>Skor.UI</title>
     <authors>PhatHuynh</authors>
     <owners>PhatHuynh</owners>
@@ -10,6 +10,8 @@
     <description>UI Controls for Xamarin.Forms</description>
     <releaseNotes>
       Git repository: https://github.com/skordesign/SKOR.UI
+      Notes:
+      - UWP minium version : Windows 10 Build 16299 Fall Creators
       Skor.UI:
       - Add GradientButton (with Image layer overlay)
       - Add GradientFrame (WIP)
@@ -22,6 +24,12 @@
       - GradientButton style when disable (Android)
       - Add GradientFrame
       - Add GradientTextButton (Gradient text and border)(Android)
+      [0.0.1-alpha5]
+      - Fix layout GradientButton and GradientTextButton (Android)
+      - RippleColor property work on Android now
+      - BindableStackLayout (WIP)
+      - GradientFrame support image overlay now (Android)
+      - GradientButton and GradientTextButton on UWP use Reveal Highlight (Fluent Design)
     </releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>Skor XamUI Xamarin.Forms Controls</tags>

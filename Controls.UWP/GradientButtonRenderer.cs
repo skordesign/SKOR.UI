@@ -5,6 +5,7 @@ using Skor.Controls.UWP.Extensions;
 using System;
 using System.ComponentModel;
 using System.IO;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
@@ -30,7 +31,8 @@ namespace Skor.Controls.UWP
                 Content = button.Text,
                 Foreground = new SolidColorBrush(button.TextColor.ToWindows()),
                 BorderThickness = new Windows.UI.Xaml.Thickness(0, 0, 0, 0),
-                Padding = new Windows.UI.Xaml.Thickness(0, 0, 0, 0)
+                Padding = new Windows.UI.Xaml.Thickness(0, 0, 0, 0),
+                Style = Application.Current.Resources["ButtonRevealStyle"] as Style
             };
             nButton.Loaded += this.NButton_Loaded;
             nButton.Click += (s, ev) => { ((IGradientButtonController)button).SendClicked(); };

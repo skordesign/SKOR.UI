@@ -16,7 +16,7 @@ namespace Skor.Controls
           nameof(BorderWidth),
           typeof(int),
           typeof(GradientTextButton),
-          4);
+          2);
         public int BorderWidth
         {
             get { return (int)GetValue(BorderWidthProperty); }
@@ -26,7 +26,7 @@ namespace Skor.Controls
            nameof(CornerRadius),
            typeof(float),
            typeof(GradientTextButton),
-           24.0f);
+           0.0f);
         public float CornerRadius
         {
             get { return (float)GetValue(CornerRadiusProperty); }
