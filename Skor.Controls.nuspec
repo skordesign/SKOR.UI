@@ -9,6 +9,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>UI Controls for Xamarin.Forms</description>
     <releaseNotes>
+      Git repository: https://github.com/skordesign/SKOR.UI
       Skor.UI:
       - Add GradientButton (with Image layer overlay)
       - Add GradientFrame (WIP)
