@@ -28,19 +28,30 @@
                                          WidthRequest="100"
                                          IsEnabled="False"
                                          CenterColor="#c471ed"
-                                         EndColor="#f64f59" />
+                                         EndColor="#f64f59">
+                <controls:GradientTextButton.BorderWidth>
+                    <OnPlatform x:TypeArguments="x:Double" Android="8" iOS="2" WinPhone="2"/>
+                </controls:GradientTextButton.BorderWidth>
+            </controls:GradientTextButton>
             <controls:GradientTextButton BackgroundColor="White"
+                                         BorderWidth="2"
                                          Clicked="GradientTextButton_Clicked"
                                          StartColor="#2980B9"
                                          Text="TextGradient"
                                          HeightRequest="48"
                                          RippleColor="#12c2e9"
                                          CenterColor="#c471ed"
-                                         EndColor="#f64f59" />
+                                         EndColor="#f64f59">
+                <controls:GradientTextButton.BorderWidth>
+                    <OnPlatform x:TypeArguments="x:Double"
+                                Android="8"
+                                iOS="2"
+                                WinPhone="2" />
+                </controls:GradientTextButton.BorderWidth>
+            </controls:GradientTextButton>
             <controls:GradientButton Text="JShine"
                                      RippleColor="#12c2e9"
                                      TextColor="White"
-                                     CornerRadius="12"
                                      FontSize="Medium"
                                      Image="test.jpg"
                                      StartColor="#12c2e9"
@@ -48,6 +59,7 @@
                                      EndColor="#f64f59" />
             <controls:GradientButton Text="Memarian"
                                      Image="test.jpg"
+                                     FontSize="Medium"
                                      CornerRadius="12"
                                      HorizontalOptions="FillAndExpand"
                                      HeightRequest="48"

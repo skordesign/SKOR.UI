@@ -42,11 +42,11 @@ namespace Skor.Controls.Droid
             InitStyleButton();
             nButton.Click += (s, ev) =>
             {
-                ((IGradientButtonController)button).SendClicked();
+                button.SendClicked();
             };
             nButton.LongClick += (s, ev) =>
             {
-                ((IGradientButtonController)button).SendLongClick();
+                button.SendLongClick();
             };
             frame.AddView(nButton);
             SetNativeControl(this.frame);
@@ -113,7 +113,7 @@ namespace Skor.Controls.Droid
             var layer2Temp = BackgroundExtension.CreateBackgroundGradient(backgroundColor.ToAndroid(),
                 backgroundColor.ToAndroid(),
                 backgroundColor.ToAndroid(), button.CornerRadius, button.Angle.ToAndroid());
-            int borderWidth = button.BorderWidth;
+            int borderWidth = (int)button.BorderWidth;
             var layer2 = new InsetDrawable(layer2Temp, borderWidth, borderWidth, borderWidth, borderWidth);
             Drawable[] drawables = new Drawable[] { layer1, layer2 };
             Drawable[] drawablesDisabled = new Drawable[] { layer1Disabled, layer2 };

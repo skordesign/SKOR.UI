@@ -7,7 +7,7 @@ namespace Skor.Controls
         public static readonly BindableProperty StartColorProperty = BindableProperty.Create(
          nameof(StartColor),
          typeof(Color),
-         typeof(GradientView),
+         typeof(GradientFrame),
          Color.Default);
         public Color StartColor
         {
@@ -17,7 +17,7 @@ namespace Skor.Controls
         public static readonly BindableProperty EndColorProperty = BindableProperty.Create(
         nameof(EndColor),
         typeof(Color),
-        typeof(GradientView),
+        typeof(GradientFrame),
         Color.Default);
         public Color EndColor
         {
@@ -27,7 +27,7 @@ namespace Skor.Controls
         public static readonly BindableProperty CenterColorProperty = BindableProperty.Create(
         nameof(CenterColor),
         typeof(Color),
-        typeof(GradientView),
+        typeof(GradientFrame),
         Color.Transparent);
         public Color CenterColor
         {
@@ -38,7 +38,7 @@ namespace Skor.Controls
         public static readonly BindableProperty AngleProperty = BindableProperty.Create(
         nameof(Angle),
         typeof(AngleGradient),
-        typeof(GradientView),
+        typeof(GradientFrame),
         AngleGradient.LeftRight);
         public AngleGradient Angle
         {
@@ -48,7 +48,7 @@ namespace Skor.Controls
         public static readonly BindableProperty ImageProperty = BindableProperty.Create(
             nameof(Image),
             typeof(FileImageSource),
-            typeof(GradientView),
+            typeof(GradientFrame),
             default(FileImageSource));
         public FileImageSource Image
         {

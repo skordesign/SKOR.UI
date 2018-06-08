@@ -36,11 +36,11 @@ namespace Skor.Controls.UWP
                 Background = new SolidColorBrush(button.BackgroundColor.ToWindows()),
                 Foreground = linear,
                 BorderBrush = linear,
-                BorderThickness = new Windows.UI.Xaml.Thickness(button.BorderWidth),
+                BorderThickness = new Thickness(button.BorderWidth),
                 Style = Application.Current.Resources["ButtonRevealStyle"] as Style
             };
-            nButton.Click += (s, ev) => { ((IGradientButtonController)button).SendClicked(); };
-            nButton.Holding += (s, ev) => { ((IGradientButtonController)button).SendLongClick(); };
+            nButton.Click += (s, ev) => { button.SendClicked(); };
+            nButton.Holding += (s, ev) => { button.SendLongClick(); };
             SetNativeControl(nButton);
         }
     }

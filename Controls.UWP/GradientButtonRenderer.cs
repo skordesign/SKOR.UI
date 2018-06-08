@@ -30,13 +30,13 @@ namespace Skor.Controls.UWP
             {
                 Content = button.Text,
                 Foreground = new SolidColorBrush(button.TextColor.ToWindows()),
-                BorderThickness = new Windows.UI.Xaml.Thickness(0, 0, 0, 0),
-                Padding = new Windows.UI.Xaml.Thickness(0, 0, 0, 0),
+                BorderThickness = new Thickness(0, 0, 0, 0),
+                Padding = new Thickness(0, 0, 0, 0),
                 Style = Application.Current.Resources["ButtonRevealStyle"] as Style
             };
             nButton.Loaded += this.NButton_Loaded;
-            nButton.Click += (s, ev) => { ((IGradientButtonController)button).SendClicked(); };
-            nButton.Holding += (s, ev) => { ((IGradientButtonController)button).SendLongClick(); };
+            nButton.Click += (s, ev) => { button.SendClicked(); };
+            nButton.Holding += (s, ev) => { button.SendLongClick(); };
             SetNativeControl(nButton);
         }
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)

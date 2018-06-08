@@ -32,11 +32,11 @@ namespace Skor.Controls.Droid
             InitStyleButton();
             nButton.Click += (s, ev) =>
             {
-                ((IGradientButtonController)button).SendClicked();
+                button.SendClicked();
             };
             nButton.LongClick += (s, ev) =>
             {
-                ((IGradientButtonController)button).SendLongClick();
+                button.SendLongClick();
             };
             frame.AddView(nButton);
             SetNativeControl(this.frame);

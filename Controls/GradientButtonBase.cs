@@ -5,12 +5,14 @@ using Xamarin.Forms;
 
 namespace Skor.Controls
 {
-    public class GradientView : View
+    public class GradientButtonBase:Button
     {
+        public event EventHandler LongClicked;
+
         public static readonly BindableProperty StartColorProperty = BindableProperty.Create(
        nameof(StartColor),
        typeof(Color),
-       typeof(GradientView),
+       typeof(GradientButtonBase),
        Color.Default);
         public Color StartColor
         {
@@ -20,7 +22,7 @@ namespace Skor.Controls
         public static readonly BindableProperty RippleColorProperty = BindableProperty.Create(
               nameof(RippleColor),
               typeof(Color),
-              typeof(GradientView),
+              typeof(GradientButtonBase),
               Color.White);
         public Color RippleColor
         {
@@ -30,7 +32,7 @@ namespace Skor.Controls
         public static readonly BindableProperty EndColorProperty = BindableProperty.Create(
         nameof(EndColor),
         typeof(Color),
-        typeof(GradientView),
+        typeof(GradientButtonBase),
         Color.Default);
         public Color EndColor
         {
@@ -40,7 +42,7 @@ namespace Skor.Controls
         public static readonly BindableProperty CenterColorProperty = BindableProperty.Create(
         nameof(CenterColor),
         typeof(Color),
-        typeof(GradientView),
+        typeof(GradientButtonBase),
         Color.Transparent);
         public Color CenterColor
         {
@@ -51,23 +53,40 @@ namespace Skor.Controls
         public static readonly BindableProperty AngleProperty = BindableProperty.Create(
         nameof(Angle),
         typeof(AngleGradient),
-        typeof(GradientView),
+        typeof(GradientButtonBase),
         AngleGradient.LeftRight);
         public AngleGradient Angle
         {
             get { return (AngleGradient)GetValue(AngleProperty); }
             set { SetValue(AngleProperty, value); }
         }
-    }
-    public enum AngleGradient
-    {
-        LeftRight,
-        RightLeft,
-        BottomTop,
-        TopBottom,
-        TopRightBottomLeft,
-        TopLeftBottomRight,
-        BottomRightTopLeft,
-        BottomLeftTopRight
+        public static readonly BindableProperty LongClickCommandProperty = BindableProperty.Create(
+            nameof(LongClickCommand),
+            typeof(Command),
+            typeof(GradientButtonBase),
+            default(Command));
+        public Command LongClickCommand
+        {
+            get { return (Command)GetValue(LongClickCommandProperty); }
+            set { SetValue(LongClickCommandProperty, value); }
+        }
+        public static readonly BindableProperty LongClickCommandParameterProperty = BindableProperty.Create(
+            nameof(LongClickCommandParameter),
+            typeof(object),
+            typeof(GradientButtonBase),
+            default(object));
+        public object LongClickCommandParameter
+        {
+            get { return GetValue(LongClickCommandParameterProperty); }
+            set { SetValue(LongClickCommandParameterProperty, value); }
+        }
+        public void SendLongClick()
+        {
+            LongClicked?.Invoke(this, new EventArgs());
+            if (LongClickCommand != null && LongClickCommand.CanExecute(null))
+            {
+                LongClickCommand.Execute(LongClickCommandParameter);
+            }
+        }
     }
 }
