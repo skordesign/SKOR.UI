@@ -10,6 +10,18 @@ namespace Skor.Controls
         public event EventHandler Pressed;
         public event EventHandler Released;
         public event EventHandler LongClicked;
+     
+        public static readonly BindableProperty FontSizeProperty = BindableProperty.Create(
+            nameof(FontSize),
+            typeof(NamedSize),
+            typeof(GradientButton),
+            NamedSize.Medium);
+        [TypeConverter(typeof(FontSizeConverter))]
+        public double FontSize
+        {
+            get { return (double)GetValue(FontSizeProperty); }
+            set { SetValue(FontSizeProperty, value); }
+        }
         public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create(
            nameof(CornerRadius),
            typeof(float),

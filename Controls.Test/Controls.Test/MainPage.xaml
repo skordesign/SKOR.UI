@@ -41,6 +41,7 @@
                                      RippleColor="#12c2e9"
                                      TextColor="White"
                                      CornerRadius="12"
+                                     FontSize="Medium"
                                      Image="test.jpg"
                                      StartColor="#12c2e9"
                                      CenterColor="#c471ed"
