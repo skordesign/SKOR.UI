@@ -45,7 +45,7 @@ namespace Skor.Controls.Droid
         {
             //Layout
             frame = new FrameLayout(Context);
-            frame.LayoutParameters = new FrameLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.WrapContent);
+            frame.LayoutParameters = new FrameLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent);
             nButton = new Android.Support.V7.Widget.AppCompatButton(Context);
             //Button
             var nBtnLayout = new FrameLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent);

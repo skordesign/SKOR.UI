@@ -1,4 +1,5 @@
 ﻿using Skor.Controls.Abstractions;
+using Skor.Controls.Base;
 using System;
 using Xamarin.Forms;
 

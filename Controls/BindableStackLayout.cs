@@ -32,7 +32,10 @@ namespace Skor.Controls
 
             if (e.OldItems != null)
             {
-                this.Children.RemoveAt(e.OldStartingIndex);
+                for (var i = 0; i < e.OldItems.Count; ++i)
+                {
+                    this.Children.RemoveAt(e.OldStartingIndex+i);
+                }
                 invalidate = true;
             }
 

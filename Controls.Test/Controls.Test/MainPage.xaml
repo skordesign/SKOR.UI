@@ -11,6 +11,7 @@
                               EndColor="#f64f59"
                               Angle="TopBottom">
         <StackLayout >
+
             <Label HorizontalOptions="Center">
                 <Label.Text>
                     <OnPlatform x:TypeArguments="x:String"
@@ -19,14 +20,22 @@
                                 WinPhone="Windows"></OnPlatform>
                 </Label.Text>
             </Label>
+            <controls:BindableStackLayout HeightRequest="48" ItemsSource="{Binding Items}" Orientation="Horizontal">
+                <controls:BindableStackLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Grid BackgroundColor="Gray">
+                            <Label Text="{Binding Index}" TextColor="White"/>
+                        </Grid>
+                    </DataTemplate>
+                </controls:BindableStackLayout.ItemTemplate>
+            </controls:BindableStackLayout>
             <controls:GradientTextButton BackgroundColor="White"
                                          StartColor="#12c2e9"
-                                         Clicked="GradientTextButton_Clicked"
-                                         Text="TextGradient"
+                                         Clicked="Add"
+                                         Text="Add"
                                          HeightRequest="48"
                                          CornerRadius="0"
                                          WidthRequest="100"
-                                         IsEnabled="False"
                                          CenterColor="#c471ed"
                                          EndColor="#f64f59">
                 <controls:GradientTextButton.BorderWidth>
@@ -35,9 +44,9 @@
             </controls:GradientTextButton>
             <controls:GradientTextButton BackgroundColor="White"
                                          BorderWidth="2"
-                                         Clicked="GradientTextButton_Clicked"
+                                         Clicked="Remove"
                                          StartColor="#2980B9"
-                                         Text="TextGradient"
+                                         Text="Remove"
                                          HeightRequest="48"
                                          RippleColor="#12c2e9"
                                          CenterColor="#c471ed"

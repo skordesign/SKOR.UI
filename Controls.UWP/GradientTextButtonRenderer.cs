@@ -23,7 +23,7 @@ namespace Skor.Controls.UWP
         private Button nButton;
         protected override void OnElementChanged(ElementChangedEventArgs<GradientTextButton> e)
         {
-            base.OnElementChanged(e);
+            //base.OnElementChanged(e);
             if (e.NewElement != null)
                 button = e.NewElement;
             var linear = BackgroundExtension.CreateGradientBrush(button.StartColor.ToWindows(),

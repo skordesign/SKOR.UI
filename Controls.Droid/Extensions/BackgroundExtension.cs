@@ -55,7 +55,7 @@ namespace Skor.Controls.Droid.Extensions
                 bitmap = Bitmap.CreateScaledBitmap(bitmap, width, height, false);
                 var dr = RoundedBitmapDrawableFactory.Create(Application.Context.Resources, bitmap);
                 dr.CornerRadius = cornerRadius;
-                dr.SetAlpha(40);
+                dr.Mutate().SetAlpha(40);
                 return dr;
             }
             return null;
