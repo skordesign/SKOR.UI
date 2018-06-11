@@ -1,10 +1,7 @@
 ﻿using Skor.Controls;
-using Skor.Controls.Abstractions;
 using Skor.Controls.UWP;
 using Skor.Controls.UWP.Extensions;
-using System;
 using System.ComponentModel;
-using System.IO;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -12,21 +9,21 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Shapes;
 using Xamarin.Forms.Platform.UWP;
 
-[assembly: ExportRenderer(typeof(GradientButton), typeof(GradientButtonRenderer))]
+[assembly: ExportRenderer(typeof(GradientToggleButton), typeof(GradientToggleButtonRenderer))]
 namespace Skor.Controls.UWP
 {
-    public class GradientButtonRenderer : ViewRenderer<GradientButton, Button>
+    public class GradientToggleButtonRenderer:ViewRenderer<GradientToggleButton, Button>
     {
         private const int DEFAULT_HEIGHT = 40;
         private const int DEFAULT_WIDTH = 100;
-        private GradientButton button;
+        private GradientToggleButton button;
         private Button nButton;
-        protected override void OnElementChanged(ElementChangedEventArgs<GradientButton> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<GradientToggleButton> e)
         {
             base.OnElementChanged(e);
             if (e.NewElement != null)
                 button = e.NewElement;
-          nButton = new Button
+            nButton = new Button
             {
                 Content = button.Text,
                 Foreground = new SolidColorBrush(button.TextColor.ToWindows()),
@@ -35,8 +32,7 @@ namespace Skor.Controls.UWP
                 Style = Application.Current.Resources["ButtonRevealStyle"] as Style
             };
             nButton.Loaded += this.NButton_Loaded;
-            nButton.Click += (s, ev) => { button.SendClicked(); };
-            nButton.Holding += (s, ev) => { button.SendLongClick(); };
+            nButton.Click += (s, ev) => { button.SendToggle(); };
             SetNativeControl(nButton);
         }
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -48,6 +44,10 @@ namespace Skor.Controls.UWP
                 {
                     RenderImage();
                 }
+            }
+            if(e.PropertyName == nameof(button.IsToggled))
+            {
+                CreateBackgroundForButton();
             }
         }
         private void RenderImage()
@@ -71,16 +71,60 @@ namespace Skor.Controls.UWP
             });
             nButton.Content = grid;
         }
+        void RenderContent()
+        {
+            var grid = new Grid();
+            var rect = new Rectangle();
+            rect.Width = button.Width > 0 ? button.Width : DEFAULT_WIDTH;
+            rect.Height = button.Height > 0 ? button.Height : DEFAULT_HEIGHT;
+            rect.Stretch = Stretch.Fill;
+            rect.Opacity = 0;
+            grid.Children.Add(rect);
+            grid.Children.Add(new TextBlock
+            {
+                Text = button.Text,
+                Foreground = new SolidColorBrush(button.TextColor.ToWindows()),
+                VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Center,
+                HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Center
+            });
+            nButton.Content = grid;
+        }
         private void NButton_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             nButton.Background = BackgroundExtension.CreateGradientBrush(button.StartColor.ToWindows(),
                 button.EndColor.ToWindows(),
                 button.CenterColor.ToWindows(),
                 button.Angle.ToWindows());
-            if (button.Image != null && !string.IsNullOrEmpty(button.Image.File))
+        }
+        void CreateBackgroundForButton()
+        {
+            if (button.IsToggled)
             {
-                RenderImage();
+                nButton.Background = CreateBackgroundToggle();
+                if (button.Image != null && !string.IsNullOrEmpty(button.Image.File))
+                {
+                    RenderImage();
+                }
             }
+            else
+            {
+                nButton.Background = CreateBackgroundUnToggle();
+                RenderContent();
+            }
+        }
+        Brush CreateBackgroundToggle()
+        {
+            return BackgroundExtension.CreateGradientBrush(button.ToggleStartColor.ToWindows(),
+                button.ToggleEndColor.ToWindows(),
+                button.ToggleCenterColor.ToWindows(),
+                button.Angle.ToWindows());
+        }
+        Brush CreateBackgroundUnToggle()
+        {
+            return BackgroundExtension.CreateGradientBrush(button.StartColor.ToWindows(),
+                button.EndColor.ToWindows(),
+                button.CenterColor.ToWindows(),
+                button.Angle.ToWindows());
         }
     }
 }

@@ -104,6 +104,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="Assets\Fonts\Raleway-Light.ttf" />
     <None Include="Controls.Test.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

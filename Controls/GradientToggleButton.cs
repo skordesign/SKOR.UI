@@ -8,7 +8,7 @@ namespace Skor.Controls
 {
     public class GradientToggleButton : Button
     {
-        public event EventHandler Toggle;
+        public event EventHandler<ToggleEventArgs> Toggle;
         public static readonly BindableProperty ToggleStartColorProperty = BindableProperty.Create(
         nameof(ToggleStartColor),
         typeof(Color),

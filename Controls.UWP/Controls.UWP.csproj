@@ -113,6 +113,7 @@
     <Compile Include="GradientButtonRenderer.cs" />
     <Compile Include="GradientFrameRenderer.cs" />
     <Compile Include="GradientTextButtonRenderer.cs" />
+    <Compile Include="GradientToggleButtonRenderer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Controls.UWP.rd.xml" />
   </ItemGroup>

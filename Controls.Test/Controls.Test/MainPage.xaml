@@ -59,7 +59,6 @@
                 </controls:GradientTextButton.BorderWidth>
             </controls:GradientTextButton>
             <controls:GradientToggleButton Text="Toggle"
-                                           Toggle="Toggle"
                                            IsToggled="False"
                                            ToggleStartColor="#2980B9"
                                            RippleColor="#12c2e9"
@@ -96,8 +95,13 @@
                                      Image="test.jpg"
                                      StartColor="#12c2e9"
                                      CenterColor="#c471ed"
-                                     EndColor="#f64f59" />
-            <controls:GradientButton Text="Memarian"
+                                     EndColor="#f64f59">
+                <controls:GradientButton.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String"
+                                WinPhone="/Assets/Fonts/Raleway-Light.ttf#Raleway"></OnPlatform>
+                </controls:GradientButton.FontFamily>
+            </controls:GradientButton>
+            <!--<controls:GradientButton Text="Memarian"
                                      Image="test.jpg"
                                      FontSize="Medium"
                                      CornerRadius="12"
@@ -126,7 +130,7 @@
                                      WidthRequest="100"
                                      TextColor="White"
                                      StartColor="#c2e59c"
-                                     EndColor="#64b3f4" />
+                                     EndColor="#64b3f4" />-->
         </StackLayout>
     </controls:GradientFrame>
 

@@ -42,10 +42,6 @@ namespace Controls.Test
         {
             Items.RemoveAt(Items.Count - 1);
         }
-
-        private void Toggle(object sender, EventArgs e)
-        {
-        }
     }
 
 }
