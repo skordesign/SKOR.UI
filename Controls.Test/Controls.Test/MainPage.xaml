@@ -4,7 +4,23 @@
              xmlns:local="clr-namespace:Controls.Test"
              xmlns:controls="clr-namespace:Skor.Controls;assembly=Skor.Controls"
              x:Class="Controls.Test.MainPage">
-
+    <ContentPage.Resources>
+        <OnPlatform x:Key="FF" x:TypeArguments="x:String">
+            <On Platform="Android">Raleway-Light.ttf#Raleway Light</On>
+        </OnPlatform>
+        <Style TargetType="controls:GradientTextButton">
+            <Setter Property="FontFamily"
+                    Value="{StaticResource FF}" />
+        </Style>
+        <Style TargetType="controls:GradientButton">
+            <Setter Property="FontFamily"
+                    Value="{StaticResource FF}" />
+        </Style>
+        <Style TargetType="controls:GradientToggleButton">
+            <Setter Property="FontFamily"
+                    Value="{StaticResource FF}" />
+        </Style>
+    </ContentPage.Resources>
     <controls:GradientFrame   Image="test.jpg"
                               StartColor="#12c2e9"
                               CenterColor="#c471ed"
@@ -54,9 +70,6 @@
                                            FontSize="Large"
                                            ToggleCenterColor="#c471ed"
                                            ToggleEndColor="#f64f59">
-                <controls:GradientToggleButton.FontFamily>
-                    <OnPlatform x:TypeArguments="x:String" Android="Raleway-Light.ttf#Raleway Light"></OnPlatform>
-                </controls:GradientToggleButton.FontFamily>
             </controls:GradientToggleButton>
             <controls:GradientTextButton BackgroundColor="White"
                                          BorderWidth="2"
