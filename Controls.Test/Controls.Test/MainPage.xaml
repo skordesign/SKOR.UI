@@ -42,12 +42,24 @@
                     <OnPlatform x:TypeArguments="x:Double" Android="8" iOS="2" WinPhone="2"/>
                 </controls:GradientTextButton.BorderWidth>
             </controls:GradientTextButton>
+            <controls:GradientToggleButton Text="Toggle"
+                                           Toggle="Toggle"
+                                           IsToggled="False"
+                                           StartColor="#2980B9"
+                                           RippleColor="#12c2e9"
+                                           UntoggledBackgroundColor="Pink"
+                                           Image="test.jpg"
+                                           CornerRadius="12"
+                                           CenterColor="#c471ed"
+                                           EndColor="#f64f59" />
             <controls:GradientTextButton BackgroundColor="White"
                                          BorderWidth="2"
                                          Clicked="Remove"
                                          StartColor="#2980B9"
                                          Text="Remove"
                                          HeightRequest="48"
+                                         WidthRequest="160"
+                                         HorizontalOptions="StartAndExpand"
                                          RippleColor="#12c2e9"
                                          CenterColor="#c471ed"
                                          EndColor="#f64f59">

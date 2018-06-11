@@ -968,6 +968,9 @@ namespace Skor.Controls.Droid
 			// aapt resource value: 0x7f01011a
 			public static int state_collapsible = 2130772250;
 			
+			// aapt resource value: 0x7f010173
+			public static int state_toggle = 2130772339;
+			
 			// aapt resource value: 0x7f010132
 			public static int statusBarBackground = 2130772274;
 			
@@ -7435,6 +7438,12 @@ namespace Skor.Controls.Droid
 			
 			// aapt resource value: 1
 			public static int ViewStubCompat_android_layout = 1;
+			
+			public static int[] toggleButton = new int[] {
+					2130772339};
+			
+			// aapt resource value: 0
+			public static int toggleButton_state_toggle = 0;
 			
 			static Styleable()
 			{

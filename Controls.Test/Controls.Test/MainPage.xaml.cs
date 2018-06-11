@@ -42,6 +42,19 @@ namespace Controls.Test
         {
             Items.RemoveAt(Items.Count - 1);
         }
+
+        private void Toggle(object sender, EventArgs e)
+        {
+            var toggleButton = sender as GradientToggleButton;
+            if (toggleButton.IsToggled)
+            {
+                toggleButton.Text = "Toggle";
+            }
+            else
+            {
+                toggleButton.Text = "Untoggle";
+            }
+        }
     }
 
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Skor.Controls.EventArguments;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
@@ -7,6 +8,7 @@ namespace Skor.Controls
 {
     public class GradientToggleButton : Button
     {
+        public event EventHandler Toggle;
         public static readonly BindableProperty UntoggledBackgroundColorProperty = BindableProperty.Create(
         nameof(UntoggledBackgroundColor),
         typeof(Color),
@@ -77,6 +79,11 @@ namespace Skor.Controls
         {
             get { return (bool)GetValue(IsToggledProperty); }
             set { SetValue(IsToggledProperty, value); }
+        }
+        public void SendToggle()
+        {
+            IsToggled = !IsToggled;
+            Toggle?.Invoke(this, new ToggleEventArgs(IsToggled, !IsToggled));
         }
     }
 }
