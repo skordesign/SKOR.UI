@@ -29,6 +29,7 @@ namespace Skor.Controls.Droid
             this.button = e.NewElement as global::Skor.Controls.GradientButton;
             this.button.HeightRequest = this.button.HeightRequest >= DEFAULT_HEIGHT_BUTTON ? this.button.HeightRequest : DEFAULT_HEIGHT_BUTTON;
             InitControls();
+            RenderText();
             InitStyleButton();
             nButton.Click += (s, ev) =>
             {
@@ -53,12 +54,14 @@ namespace Skor.Controls.Droid
             nButton.SetPadding(0, 0, 0, 0);
             nButton.LayoutParameters = nBtnLayout;
         }
-
-        private void InitStyleButton()
+        void RenderText()
         {
             nButton.Text = button.Text;
             nButton.SetTextColor(button.TextColor.ToAndroid());
-
+            nButton.Typeface = button.Font.ToTypeface();
+        }
+        private void InitStyleButton()
+        {
             nButton.Background = CreateBackgroundForButton();
             nButton.AddRipple(button.RippleColor.ToAndroid());
             nButton.Enabled = button.IsEnabled;

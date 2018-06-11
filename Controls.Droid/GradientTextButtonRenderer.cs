@@ -39,6 +39,7 @@ namespace Skor.Controls.Droid
             this.button.BackgroundColor = Xamarin.Forms.Color.Transparent;
             this.button.HeightRequest = this.button.HeightRequest >= DEFAULT_HEIGHT_BUTTON ? this.button.HeightRequest : DEFAULT_HEIGHT_BUTTON;
             InitControls();
+            RenderText();
             InitStyleButton();
             nButton.Click += (s, ev) =>
             {
@@ -50,6 +51,11 @@ namespace Skor.Controls.Droid
             };
             frame.AddView(nButton);
             SetNativeControl(this.frame);
+        }
+        void RenderText()
+        {
+            nButton.Text = button.Text;
+            nButton.Typeface = button.Font.ToTypeface();
         }
         void InitControls()
         {
@@ -65,8 +71,6 @@ namespace Skor.Controls.Droid
         }
         private void InitStyleButton()
         {
-            nButton.Text = button.Text;
-
             nButton.Background = CreateBackgroundButton();
             nButton.AddRipple(button.RippleColor.ToAndroid());
             nButton.Enabled = button.IsEnabled;

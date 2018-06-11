@@ -331,6 +331,7 @@ namespace Controls.Test.Droid
 			global::Skor.Controls.Droid.Resource.Attribute.state_above_anchor = global::Controls.Test.Droid.Resource.Attribute.state_above_anchor;
 			global::Skor.Controls.Droid.Resource.Attribute.state_collapsed = global::Controls.Test.Droid.Resource.Attribute.state_collapsed;
 			global::Skor.Controls.Droid.Resource.Attribute.state_collapsible = global::Controls.Test.Droid.Resource.Attribute.state_collapsible;
+			global::Skor.Controls.Droid.Resource.Attribute.state_toggle = global::Controls.Test.Droid.Resource.Attribute.state_toggle;
 			global::Skor.Controls.Droid.Resource.Attribute.statusBarBackground = global::Controls.Test.Droid.Resource.Attribute.statusBarBackground;
 			global::Skor.Controls.Droid.Resource.Attribute.statusBarScrim = global::Controls.Test.Droid.Resource.Attribute.statusBarScrim;
 			global::Skor.Controls.Droid.Resource.Attribute.subMenuArrow = global::Controls.Test.Droid.Resource.Attribute.subMenuArrow;
@@ -2292,6 +2293,8 @@ namespace Controls.Test.Droid
 			global::Skor.Controls.Droid.Resource.Styleable.ViewStubCompat_android_id = global::Controls.Test.Droid.Resource.Styleable.ViewStubCompat_android_id;
 			global::Skor.Controls.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId = global::Controls.Test.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
 			global::Skor.Controls.Droid.Resource.Styleable.ViewStubCompat_android_layout = global::Controls.Test.Droid.Resource.Styleable.ViewStubCompat_android_layout;
+			global::Skor.Controls.Droid.Resource.Styleable.toggleButton = global::Controls.Test.Droid.Resource.Styleable.toggleButton;
+			global::Skor.Controls.Droid.Resource.Styleable.toggleButton_state_toggle = global::Controls.Test.Droid.Resource.Styleable.toggleButton_state_toggle;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::Controls.Test.Droid.Resource.Attribute.actionBarSize;
 		}
 		
@@ -3238,6 +3241,9 @@ namespace Controls.Test.Droid
 			
 			// aapt resource value: 0x7f01011a
 			public const int state_collapsible = 2130772250;
+			
+			// aapt resource value: 0x7f010173
+			public const int state_toggle = 2130772339;
 			
 			// aapt resource value: 0x7f010132
 			public const int statusBarBackground = 2130772274;
@@ -9767,6 +9773,12 @@ namespace Controls.Test.Droid
 			
 			// aapt resource value: 1
 			public const int ViewStubCompat_android_layout = 1;
+			
+			public static int[] toggleButton = new int[] {
+					2130772339};
+			
+			// aapt resource value: 0
+			public const int toggleButton_state_toggle = 0;
 			
 			static Styleable()
 			{

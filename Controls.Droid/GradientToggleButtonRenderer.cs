@@ -32,6 +32,7 @@ namespace Skor.Controls.Droid
             set {
                 isToggle = value;
                 nButton.Background = CreateBackgroundForButton();
+                RenderText();
             }
         }
         public GradientToggleButtonRenderer(Context context):base(context)
@@ -44,6 +45,7 @@ namespace Skor.Controls.Droid
             this.button = e.NewElement as global::Skor.Controls.GradientToggleButton;
             this.button.HeightRequest = this.button.HeightRequest >= DEFAULT_HEIGHT_BUTTON ? this.button.HeightRequest : DEFAULT_HEIGHT_BUTTON;
             InitControls();
+            RenderText();
             InitStyleButton();
             nButton.Click += (s, ev) =>
             {
@@ -67,12 +69,22 @@ namespace Skor.Controls.Droid
 
         private void InitStyleButton()
         {
-            nButton.Text = button.Text;
-            nButton.SetTextColor(!button.TextColor.IsDefault? button.TextColor.ToAndroid(): Android.Graphics.Color.Black);
-
             nButton.Background = CreateBackgroundForButton();
             nButton.AddRipple(button.RippleColor.ToAndroid());
             nButton.Enabled = button.IsEnabled;
+        }
+        private void RenderText()
+        {
+            nButton.Text = button.Text;
+            nButton.Typeface = button.Font.ToTypeface();
+            if (button.IsToggled)
+            {
+                nButton.SetTextColor(button.ToggleTextColor.ToAndroid());
+            }
+            else
+            {
+                nButton.SetTextColor(button.TextColor.IsDefault ? Android.Graphics.Color.Black : button.TextColor.ToAndroid());
+            }
         }
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
@@ -88,11 +100,6 @@ namespace Skor.Controls.Droid
             {
                 IsToggle = button.IsToggled;
             }
-            if(e.PropertyName == nameof(button.Text))
-            {
-                nButton.Text = button.Text;
-                UpdateLayout();
-            }
         }
         Drawable CreateBackgroundForButton()
         {
@@ -102,14 +109,14 @@ namespace Skor.Controls.Droid
         {
             List<Drawable> drawables = new List<Drawable>();
             List<Drawable> drawablesDisabled = new List<Drawable>();
-            drawables.Add(BackgroundExtension.CreateBackgroundGradient(button.StartColor.ToAndroid(),
-                button.EndColor.ToAndroid(),
-                button.CenterColor.ToAndroid(),
+            drawables.Add(BackgroundExtension.CreateBackgroundGradient(button.ToggleStartColor.ToAndroid(),
+                button.ToggleEndColor.ToAndroid(),
+                button.ToggleCenterColor.ToAndroid(),
                 button.CornerRadius,
                 button.Angle.ToAndroid()));
-            drawablesDisabled.Add(BackgroundExtension.CreateBackgroundGradient(button.StartColor.ToAndroid(),
-                button.EndColor.ToAndroid(),
-                button.CenterColor.ToAndroid(),
+            drawablesDisabled.Add(BackgroundExtension.CreateBackgroundGradient(button.ToggleStartColor.ToAndroid(),
+                button.ToggleEndColor.ToAndroid(),
+                button.ToggleCenterColor.ToAndroid(),
                 button.CornerRadius,
                 button.Angle.ToAndroid()));
             if (button.Image != null && !string.IsNullOrEmpty(button.Image.File))
@@ -135,14 +142,14 @@ namespace Skor.Controls.Droid
         {
             List<Drawable> drawables = new List<Drawable>();
             List<Drawable> drawablesDisabled = new List<Drawable>();
-            drawables.Add(BackgroundExtension.CreateBackgroundGradient(button.UntoggledBackgroundColor.ToAndroid(),
-                button.UntoggledBackgroundColor.ToAndroid(),
-                button.UntoggledBackgroundColor.ToAndroid(),
+            drawables.Add(BackgroundExtension.CreateBackgroundGradient(button.StartColor.ToAndroid(),
+                button.EndColor.ToAndroid(),
+                button.CenterColor.ToAndroid(),
                 button.CornerRadius,
                 button.Angle.ToAndroid()));
-            drawablesDisabled.Add(BackgroundExtension.CreateBackgroundGradient(button.UntoggledBackgroundColor.ToAndroid(),
-                button.UntoggledBackgroundColor.ToAndroid(),
-                button.UntoggledBackgroundColor.ToAndroid(),
+            drawablesDisabled.Add(BackgroundExtension.CreateBackgroundGradient(button.StartColor.ToAndroid(),
+                button.EndColor.ToAndroid(),
+                button.CenterColor.ToAndroid(),
                 button.CornerRadius,
                 button.Angle.ToAndroid()));
             Drawable layer = new LayerDrawable(drawables.ToArray());

@@ -45,13 +45,19 @@
             <controls:GradientToggleButton Text="Toggle"
                                            Toggle="Toggle"
                                            IsToggled="False"
-                                           StartColor="#2980B9"
+                                           ToggleStartColor="#2980B9"
                                            RippleColor="#12c2e9"
-                                           UntoggledBackgroundColor="Pink"
                                            Image="test.jpg"
-                                           CornerRadius="12"
-                                           CenterColor="#c471ed"
-                                           EndColor="#f64f59" />
+                                           CornerRadius="48"
+                                           ToggleTextColor="White"
+                                           HorizontalOptions="StartAndExpand"
+                                           FontSize="Large"
+                                           ToggleCenterColor="#c471ed"
+                                           ToggleEndColor="#f64f59">
+                <controls:GradientToggleButton.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String" Android="Raleway-Light.ttf#Raleway Light"></OnPlatform>
+                </controls:GradientToggleButton.FontFamily>
+            </controls:GradientToggleButton>
             <controls:GradientTextButton BackgroundColor="White"
                                          BorderWidth="2"
                                          Clicked="Remove"

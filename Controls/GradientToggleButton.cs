@@ -9,21 +9,52 @@ namespace Skor.Controls
     public class GradientToggleButton : Button
     {
         public event EventHandler Toggle;
-        public static readonly BindableProperty UntoggledBackgroundColorProperty = BindableProperty.Create(
-        nameof(UntoggledBackgroundColor),
+        public static readonly BindableProperty ToggleStartColorProperty = BindableProperty.Create(
+        nameof(ToggleStartColor),
         typeof(Color),
         typeof(GradientToggleButton),
         Color.Gray);
-        public Color UntoggledBackgroundColor
+        public Color ToggleStartColor
         {
-            get { return (Color)GetValue(UntoggledBackgroundColorProperty); }
-            set { SetValue(UntoggledBackgroundColorProperty, value); }
+            get { return (Color)GetValue(ToggleStartColorProperty); }
+            set { SetValue(ToggleStartColorProperty, value); }
+        }
+        public static readonly BindableProperty ToggleCenterColorProperty = BindableProperty.Create(
+       nameof(ToggleCenterColor),
+       typeof(Color),
+       typeof(GradientToggleButton),
+       Color.Gray);
+        public Color ToggleCenterColor
+        {
+            get { return (Color)GetValue(ToggleCenterColorProperty); }
+            set { SetValue(ToggleCenterColorProperty, value); }
+        }
+        public static readonly BindableProperty ToggleEndColorProperty = BindableProperty.Create(
+       nameof(ToggleEndColor),
+       typeof(Color),
+       typeof(GradientToggleButton),
+       Color.Gray);
+        public Color ToggleEndColor
+        {
+            get { return (Color)GetValue(ToggleEndColorProperty); }
+            set { SetValue(ToggleEndColorProperty, value); }
+        }
+        public static readonly BindableProperty ToggleTextColorProperty = BindableProperty.Create(
+        nameof(ToggleTextColor),
+        typeof(Color),
+        typeof(GradientToggleButton),
+        Color.Gray);
+        public Color ToggleTextColor
+        {
+            get { return (Color)GetValue(ToggleTextColorProperty); }
+            set { SetValue(ToggleTextColorProperty, value); }
         }
         public static readonly BindableProperty StartColorProperty = BindableProperty.Create(
          nameof(StartColor),
          typeof(Color),
          typeof(GradientToggleButton),
          Color.Default);
+
         public Color StartColor
         {
             get { return (Color)GetValue(StartColorProperty); }
