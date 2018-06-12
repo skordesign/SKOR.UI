@@ -33,7 +33,7 @@ namespace Skor.Controls
        nameof(ToggleCenterColor),
        typeof(Color),
        typeof(GradientToggleButton),
-       Color.Gray);
+       Color.Transparent);
         public Color ToggleCenterColor
         {
             get { return (Color)GetValue(ToggleCenterColorProperty); }
@@ -53,7 +53,7 @@ namespace Skor.Controls
         nameof(ToggleTextColor),
         typeof(Color),
         typeof(GradientToggleButton),
-        Color.Gray);
+        Color.White);
         public Color ToggleTextColor
         {
             get { return (Color)GetValue(ToggleTextColorProperty); }
@@ -63,7 +63,7 @@ namespace Skor.Controls
          nameof(StartColor),
          typeof(Color),
          typeof(GradientToggleButton),
-         Color.Default);
+         Color.WhiteSmoke);
 
         public Color StartColor
         {
@@ -84,7 +84,7 @@ namespace Skor.Controls
         nameof(EndColor),
         typeof(Color),
         typeof(GradientToggleButton),
-        Color.Default);
+        Color.WhiteSmoke);
         public Color EndColor
         {
             get { return (Color)GetValue(EndColorProperty); }
