@@ -1,12 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:Skor.Controls;assembly=Skor.Controls"
              x:Class="Controls.Test.ListDemoPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ListView ItemsSource="{Binding Items}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <c:MasterDetailView IsDetailShown="{Binding IsShow}">
+                            <c:MasterDetailView.Master>
+                                <Grid>
+                                    <Label Text="{Binding Index}"/>
+                                </Grid>
+                            </c:MasterDetailView.Master>
+                            <c:MasterDetailView.Detail>
+                                <Grid>
+                                    <Label Text="{Binding Index}" />
+                                </Grid>
+                            </c:MasterDetailView.Detail>
+                        </c:MasterDetailView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>

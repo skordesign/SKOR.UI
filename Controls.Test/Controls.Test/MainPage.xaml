@@ -117,9 +117,10 @@
                                 WinPhone="/Assets/Fonts/Raleway-Light.ttf#Raleway"></OnPlatform>
                 </controls:GradientButton.FontFamily>
             </controls:GradientButton>
-            <controls:GradientButton Text="Memarian"
+            <controls:GradientButton Text="Goto List"
                                      Image="test.jpg"
                                      FontSize="Medium"
+                                     Clicked="GradientTextButton_Clicked"
                                      CornerRadius="12"
                                      HorizontalOptions="FillAndExpand"
                                      HeightRequest="48"

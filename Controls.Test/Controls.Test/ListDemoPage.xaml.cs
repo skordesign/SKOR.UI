@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,17 @@ namespace Controls.Test
 		public ListDemoPage ()
 		{
 			InitializeComponent ();
+            BindingContext = this;
 		}
-	}
+        ObservableCollection<object> items = new ObservableCollection<object>
+        {
+            new {Index="One", IsShow=false },
+            new {Index = "Two",IsShow=true},
+            new {Index="Three",IsShow=false}
+        };
+        public ObservableCollection<object> Items
+        {
+            get => items;
+        }
+    }
 }
