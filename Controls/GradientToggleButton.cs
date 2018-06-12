@@ -9,6 +9,16 @@ namespace Skor.Controls
     public class GradientToggleButton : Button
     {
         public event EventHandler<ToggleEventArgs> Toggle;
+        public static readonly BindableProperty HasShadowProperty = BindableProperty.Create(
+      nameof(HasShadow),
+      typeof(bool),
+      typeof(GradientToggleButton),
+      true);
+        public bool HasShadow
+        {
+            get { return (bool)GetValue(HasShadowProperty); }
+            set { SetValue(HasShadowProperty, value); }
+        }
         public static readonly BindableProperty ToggleStartColorProperty = BindableProperty.Create(
         nameof(ToggleStartColor),
         typeof(Color),

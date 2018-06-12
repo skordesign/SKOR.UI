@@ -72,6 +72,10 @@ namespace Skor.Controls.Droid
             nButton.Background = CreateBackgroundForButton();
             nButton.AddRipple(button.RippleColor.ToAndroid());
             nButton.Enabled = button.IsEnabled;
+            if (!button.HasShadow)
+            {
+                nButton.StateListAnimator = null;
+            }
         }
         private void RenderText()
         {

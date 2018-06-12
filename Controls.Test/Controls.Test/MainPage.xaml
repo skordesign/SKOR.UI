@@ -49,6 +49,7 @@
                                          StartColor="#12c2e9"
                                          Clicked="Add"
                                          Text="Add"
+                                         HasShadow="False"
                                          HeightRequest="48"
                                          CornerRadius="0"
                                          WidthRequest="100"
@@ -58,18 +59,33 @@
                     <OnPlatform x:TypeArguments="x:Double" Android="8" iOS="2" WinPhone="2"/>
                 </controls:GradientTextButton.BorderWidth>
             </controls:GradientTextButton>
-            <controls:GradientToggleButton Text="Toggle"
-                                           IsToggled="False"
-                                           ToggleStartColor="#2980B9"
-                                           RippleColor="#12c2e9"
-                                           Image="test.jpg"
-                                           CornerRadius="48"
-                                           ToggleTextColor="White"
-                                           HorizontalOptions="StartAndExpand"
-                                           FontSize="Large"
-                                           ToggleCenterColor="#c471ed"
-                                           ToggleEndColor="#f64f59">
-            </controls:GradientToggleButton>
+            <StackLayout Orientation="Horizontal">
+                <controls:GradientToggleButton Text="Toggle"
+                                               IsToggled="False"
+                                               ToggleStartColor="#2980B9"
+                                               RippleColor="#12c2e9"
+                                               Image="test.jpg"
+                                               CornerRadius="48"
+                                               ToggleTextColor="White"
+                                               HorizontalOptions="StartAndExpand"
+                                               FontSize="Large"
+                                               ToggleCenterColor="#c471ed"
+                                               ToggleEndColor="#f64f59">
+                </controls:GradientToggleButton>
+                <controls:GradientToggleButton Text="Toggle"
+                                               IsToggled="False"
+                                               ToggleStartColor="#2980B9"
+                                               RippleColor="#12c2e9"
+                                               Image="test.jpg"
+                                               HasShadow="False"
+                                               CornerRadius="48"
+                                               ToggleTextColor="White"
+                                               HorizontalOptions="StartAndExpand"
+                                               FontSize="Large"
+                                               ToggleCenterColor="#c471ed"
+                                               ToggleEndColor="#c2e59c">
+                </controls:GradientToggleButton>
+            </StackLayout>
             <controls:GradientTextButton BackgroundColor="White"
                                          BorderWidth="2"
                                          Clicked="Remove"
@@ -101,7 +117,7 @@
                                 WinPhone="/Assets/Fonts/Raleway-Light.ttf#Raleway"></OnPlatform>
                 </controls:GradientButton.FontFamily>
             </controls:GradientButton>
-            <!--<controls:GradientButton Text="Memarian"
+            <controls:GradientButton Text="Memarian"
                                      Image="test.jpg"
                                      FontSize="Medium"
                                      CornerRadius="12"
@@ -109,6 +125,7 @@
                                      HeightRequest="48"
                                      WidthRequest="100"
                                      TextColor="White"
+                                     HasShadow="False"
                                      StartColor="#aa4b6b"
                                      CenterColor="#6b6b83"
                                      EndColor="#3b8d99" />
@@ -130,7 +147,7 @@
                                      WidthRequest="100"
                                      TextColor="White"
                                      StartColor="#c2e59c"
-                                     EndColor="#64b3f4" />-->
+                                     EndColor="#64b3f4" />
         </StackLayout>
     </controls:GradientFrame>
 

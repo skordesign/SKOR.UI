@@ -5,9 +5,19 @@ using Xamarin.Forms;
 
 namespace Skor.Controls.Base
 {
-    public class GradientButtonBase:Button
+    public class GradientButtonBase : Button
     {
         public event EventHandler LongClicked;
+        public static readonly BindableProperty HasShadowProperty = BindableProperty.Create(
+      nameof(HasShadow),
+      typeof(bool),
+      typeof(GradientButtonBase),
+      true);
+        public bool HasShadow
+        {
+            get { return (bool)GetValue(HasShadowProperty); }
+            set { SetValue(HasShadowProperty, value); }
+        }
 
         public static readonly BindableProperty StartColorProperty = BindableProperty.Create(
        nameof(StartColor),

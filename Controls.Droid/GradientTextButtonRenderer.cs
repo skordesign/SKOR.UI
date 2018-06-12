@@ -74,6 +74,10 @@ namespace Skor.Controls.Droid
             nButton.Background = CreateBackgroundButton();
             nButton.AddRipple(button.RippleColor.ToAndroid());
             nButton.Enabled = button.IsEnabled;
+            if (!button.HasShadow)
+            {
+                nButton.StateListAnimator = null;
+            }
         }
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
