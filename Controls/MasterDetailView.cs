@@ -8,7 +8,9 @@ namespace Skor.Controls
     public class MasterDetailView : ContentView
     {
         public static readonly BindableProperty IsDetailShownProperty =
-           BindableProperty.Create(nameof(IsDetailShown), typeof(bool), typeof(MasterDetailView), false);
+           BindableProperty.Create(nameof(IsDetailShown), typeof(bool), typeof(MasterDetailView), false,
+               propertyChanged: OnIsDetailShownChanged);
+
         public bool IsDetailShown
         {
             get { return (bool)GetValue(IsDetailShownProperty); }
@@ -60,8 +62,17 @@ namespace Skor.Controls
                 return;
             if (this.Content == null)
                 this.Content = new StackLayout() { Orientation = StackOrientation.Horizontal };
-            Detail.SetBinding(View.IsVisibleProperty, nameof(IsDetailShown));
+            Detail.IsVisible = IsDetailShown;
             (this.Content as StackLayout).Children.Add(Detail);
         }
+        private void ChangedDetailVisibility()
+        {
+            Detail.IsVisible = IsDetailShown;
+        }
+        private static void OnIsDetailShownChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            (bindable as MasterDetailView).ChangedDetailVisibility();
+        }
+
     }
 }
