@@ -7,6 +7,10 @@ namespace Skor.Controls
 {
     public class MasterDetailView : ContentView
     {
+        public bool TapMasterToShowDetail
+        {
+            get; set;
+        }
         public static readonly BindableProperty IsDetailShownProperty =
            BindableProperty.Create(nameof(IsDetailShown), typeof(bool), typeof(MasterDetailView), false,
                propertyChanged: OnIsDetailShownChanged);
@@ -53,17 +57,27 @@ namespace Skor.Controls
             if (Master == null)
                 return;
             if (this.Content == null)
-                this.Content = new StackLayout() { Orientation = StackOrientation.Horizontal };
-            (this.Content as StackLayout).Children.Add(Master);
+                this.Content = CreateContent();
+            var masterTap = new TapGestureRecognizer();
+            masterTap.Tapped += (s, e) => ShowDetail();
+            Master.GestureRecognizers.Add(masterTap);
+            AddToContent(Master);
         }
+
+        private void ShowDetail()
+        {
+            if (TapMasterToShowDetail)
+                IsDetailShown = !IsDetailShown;
+        }
+
         private void RenderDetail()
         {
             if (Detail == null)
                 return;
             if (this.Content == null)
-                this.Content = new StackLayout() { Orientation = StackOrientation.Horizontal };
+                this.Content = CreateContent();
             Detail.IsVisible = IsDetailShown;
-            (this.Content as StackLayout).Children.Add(Detail);
+            AddToContent(Detail);
         }
         private void ChangedDetailVisibility()
         {
@@ -73,6 +87,13 @@ namespace Skor.Controls
         {
             (bindable as MasterDetailView).ChangedDetailVisibility();
         }
-
+        private View CreateContent()
+        {
+            return new StackLayout();
+        }
+        private void AddToContent(View masterOrDetail)
+        {
+            (this.Content as StackLayout).Children.Add(masterOrDetail);
+        }
     }
 }

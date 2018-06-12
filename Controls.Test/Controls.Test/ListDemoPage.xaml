@@ -4,11 +4,11 @@
              xmlns:c="clr-namespace:Skor.Controls;assembly=Skor.Controls"
              x:Class="Controls.Test.ListDemoPage">
     <ContentPage.Content>
-        <ListView ItemsSource="{Binding Items}">
+        <ListView ItemsSource="{Binding Items}" HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <c:MasterDetailView IsDetailShown="{Binding IsShow}">
+                        <c:MasterDetailView IsDetailShown="{Binding IsShow}" TapMasterToShowDetail="True">
                             <c:MasterDetailView.Master>
                                 <Grid>
                                     <Label Text="{Binding Index}"/>

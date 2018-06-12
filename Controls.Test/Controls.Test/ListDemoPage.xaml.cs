@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Skor.Controls;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -27,6 +28,11 @@ namespace Controls.Test
         public ObservableCollection<object> Items
         {
             get => items;
+        }
+
+        private void MasterDetailView_MasterClicked(object sender, EventArgs e)
+        {
+            (sender as MasterDetailView).IsDetailShown = !(sender as MasterDetailView).IsDetailShown;
         }
     }
 }
