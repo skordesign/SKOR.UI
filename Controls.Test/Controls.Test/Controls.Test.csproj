@@ -11,4 +11,10 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Controls\Controls.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="ListDemoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>

@@ -19,8 +19,7 @@ namespace Controls.Test
 
         private void GradientTextButton_Clicked(object sender, EventArgs e)
         {
-            //(sender as GradientTextButton).IsEnabled = false;
-           
+            Navigation.PushAsync(new ListDemoPage());
         }
         ObservableCollection<object> items = new ObservableCollection<object>
         {
