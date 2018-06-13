@@ -77,11 +77,22 @@ namespace Skor.Controls
             if (this.Content == null)
                 this.Content = CreateContent();
             Detail.IsVisible = IsDetailShown;
+            
             AddToContent(Detail);
         }
-        private void ChangedDetailVisibility()
+        private async void ChangedDetailVisibility()
         {
-            Detail.IsVisible = IsDetailShown;
+            if (IsDetailShown)
+            {
+                await Detail.TranslateTo(0, -Detail.Height);
+                Detail.IsVisible = IsDetailShown;
+                await Detail.TranslateTo(0, 0);
+            }
+            else
+            {
+                await Detail.TranslateTo(0, -Detail.Height);
+                Detail.IsVisible = IsDetailShown;
+            }
         }
         private static void OnIsDetailShownChanged(BindableObject bindable, object oldValue, object newValue)
         {
@@ -89,7 +100,7 @@ namespace Skor.Controls
         }
         private View CreateContent()
         {
-            return new StackLayout();
+            return new StackLayout() { Spacing = 0};
         }
         private void AddToContent(View masterOrDetail)
         {

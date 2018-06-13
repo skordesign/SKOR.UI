@@ -10,14 +10,14 @@
                     <ViewCell>
                         <c:MasterDetailView IsDetailShown="{Binding IsShow}" TapMasterToShowDetail="True">
                             <c:MasterDetailView.Master>
-                                <Grid>
+                                <Frame HeightRequest="80" >
                                     <Label Text="{Binding Index}"/>
-                                </Grid>
+                                </Frame>
                             </c:MasterDetailView.Master>
                             <c:MasterDetailView.Detail>
-                                <Grid>
-                                    <Label Text="{Binding Index}" />
-                                </Grid>
+                                <Frame BackgroundColor="Gray" >
+                                    <Label TextColor="White" Text="{Binding Index}" />
+                                </Frame>
                             </c:MasterDetailView.Detail>
                         </c:MasterDetailView>
                     </ViewCell>
