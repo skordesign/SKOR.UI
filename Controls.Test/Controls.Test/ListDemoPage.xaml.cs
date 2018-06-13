@@ -32,7 +32,7 @@ namespace Controls.Test
 
         private void MasterDetailView_MasterClicked(object sender, EventArgs e)
         {
-            (sender as MasterDetailView).IsDetailShown = !(sender as MasterDetailView).IsDetailShown;
+            (sender as MasterDetailCell).IsDetailShown = !(sender as MasterDetailCell).IsDetailShown;
         }
     }
 }
