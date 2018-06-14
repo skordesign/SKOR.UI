@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Skor.Controls.PinView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="CornerRadius"
+                        Value="24" />
+                <Setter Property="WidthRequest"
+                        Value="48" />
+                <Setter Property="TextColor"
+                        Value="White" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+                <Setter Property="HeightRequest"
+                        Value="48" />
+                <Setter Property="BackgroundColor"
+                        Value="Red" />
+                <Setter Property="FontSize"
+                        Value="Medium" />
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <ScrollView>
+            <StackLayout>
+                <Grid HorizontalOptions="CenterAndExpand"
+                      Margin="0,8"
+                      HeightRequest="32"
+                      x:Name="PinGrid">
+                </Grid>
+                <StackLayout Orientation="Horizontal"
+                             x:Name="CheckingPanel"
+                             IsVisible="False"
+                             HorizontalOptions="CenterAndExpand">
+                    <Label VerticalOptions="Center"
+                           x:Name="CheckingLabel" />
+                    <ActivityIndicator WidthRequest="32"
+                                       HeightRequest="32"
+                                       IsRunning="True"
+                                       Color="Red" />
+                </StackLayout>
+                <Grid Margin="0,8"
+                      Padding="0"
+                      WidthRequest="192"
+                      HorizontalOptions="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Button Text="1"
+                            Clicked="SendKey1"
+                            x:Name="Number1" />
+                    <Button Text="2"
+                            Grid.Column="1"
+                            Clicked="SendKey2"
+                            x:Name="Number2" />
+                    <Button Text="3"
+                            Grid.Column="2"
+                            Clicked="SendKey3"
+                            x:Name="Number3" />
+                    <Button Text="4"
+                            Grid.Row="1"
+                            Clicked="SendKey4"
+                            x:Name="Number4" />
+                    <Button Text="5"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            Clicked="SendKey5"
+                            x:Name="Number5" />
+                    <Button Text="6"
+                            Grid.Column="2"
+                            Grid.Row="1"
+                            Clicked="SendKey6"
+                            x:Name="Number6" />
+                    <Button Text="7"
+                            Grid.Row="2"
+                            Clicked="SendKey7"
+                            x:Name="Number7" />
+                    <Button Text="8"
+                            Grid.Column="1"
+                            Grid.Row="2"
+                            Clicked="SendKey8"
+                            x:Name="Number8" />
+                    <Button Text="9"
+                            Grid.Column="2"
+                            Grid.Row="2"
+                            Clicked="SendKey9"
+                            x:Name="Number9" />
+                    <Button Text="0"
+                            Grid.Column="1"
+                            Grid.Row="3"
+                            Clicked="SendKey0"
+                            x:Name="Number0" />
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentView.Content>
+</ContentView>
