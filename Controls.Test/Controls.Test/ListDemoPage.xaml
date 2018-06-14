@@ -7,23 +7,23 @@
         <ListView ItemsSource="{Binding Items}" HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <c:MasterDetailCell IsDetailShown="{Binding IsShow}"
+                    <c:ExpanxibleCell IsDetailShown="{Binding IsShow}"
                                         DetailHeight="200"
                                         TapMasterToShowDetail="True">
-                        <c:MasterDetailCell.Master>
+                        <c:ExpanxibleCell.Master>
                             <Frame>
                                 <Label Text="{Binding Index}" />
                             </Frame>
-                        </c:MasterDetailCell.Master>
-                        <c:MasterDetailCell.Detail>
+                        </c:ExpanxibleCell.Master>
+                        <c:ExpanxibleCell.Detail>
                             <Frame BackgroundColor="LightGray">
                                 <Grid>
                                     <Label TextColor="White"
                                            Text="{Binding Index}" />
                                 </Grid>
                             </Frame>
-                        </c:MasterDetailCell.Detail>
-                    </c:MasterDetailCell>
+                        </c:ExpanxibleCell.Detail>
+                    </c:ExpanxibleCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

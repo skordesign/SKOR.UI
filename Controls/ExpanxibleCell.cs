@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Skor.Controls
 {
-    public class MasterDetailCell : ViewCell
+    public class ExpanxibleCell : ViewCell
     {
         public bool TapMasterToShowDetail
         {
             get; set;
         }
         public static readonly BindableProperty DetailHeightProperty =
-          BindableProperty.Create(nameof(DetailHeight), typeof(double), typeof(MasterDetailCell), 80d,
+          BindableProperty.Create(nameof(DetailHeight), typeof(double), typeof(ExpanxibleCell), 80d,
               propertyChanged: OnIsDetailShownChanged);
 
         public double DetailHeight
@@ -21,7 +22,7 @@ namespace Skor.Controls
             set { SetValue(DetailHeightProperty, value); }
         }
         public static readonly BindableProperty IsDetailShownProperty =
-           BindableProperty.Create(nameof(IsDetailShown), typeof(bool), typeof(MasterDetailCell), false,
+           BindableProperty.Create(nameof(IsDetailShown), typeof(bool), typeof(ExpanxibleCell), false,
                propertyChanged: OnIsDetailShownChanged);
 
         public bool IsDetailShown
@@ -30,7 +31,7 @@ namespace Skor.Controls
             set { SetValue(IsDetailShownProperty, value); }
         }
         public static readonly BindableProperty DetailProperty =
-           BindableProperty.Create(nameof(Detail), typeof(View), typeof(MasterDetailCell), default(View),
+           BindableProperty.Create(nameof(Detail), typeof(View), typeof(ExpanxibleCell), default(View),
                propertyChanged: OnDetailChanged);
         public View Detail
         {
@@ -38,7 +39,7 @@ namespace Skor.Controls
             set { SetValue(DetailProperty, value); }
         }
         public static readonly BindableProperty MasterProperty =
-           BindableProperty.Create(nameof(Master), typeof(View), typeof(MasterDetailCell), default(View),
+           BindableProperty.Create(nameof(Master), typeof(View), typeof(ExpanxibleCell), default(View),
                propertyChanged: OnMasterChanged);
 
         public View Master
@@ -50,7 +51,7 @@ namespace Skor.Controls
         {
             if (newValue != null)
             {
-                (bindable as MasterDetailCell).RenderMaster();
+                (bindable as ExpanxibleCell).RenderMaster();
             }
         }
 
@@ -58,7 +59,7 @@ namespace Skor.Controls
         {
             if (newValue != null)
             {
-                (bindable as MasterDetailCell).RenderDetail();
+                (bindable as ExpanxibleCell).RenderDetail();
             }
         }
         private void RenderMaster()
@@ -99,10 +100,9 @@ namespace Skor.Controls
             if (this.View == null)
                 this.View = CreateContent();
             Detail.VerticalOptions = LayoutOptions.Start;
-            Detail.HeightRequest = 0;
-            Detail.MinimumHeightRequest = 0;
             Detail.Margin = new Thickness(Detail.Margin.Left, Height - 8, Detail.Margin.Right, Detail.Margin.Bottom);
             AddToContent();
+            ChangedDetailVisibility();
         }
         private void ChangedDetailVisibility()
         {
@@ -110,23 +110,36 @@ namespace Skor.Controls
             {
                 if (IsDetailShown)
                 {
-                    Detail.Animate("HeightChange", _ => {
+                    Detail.IsVisible = IsDetailShown;
+                    //if (Detail.Height > 0 && Detail.TranslationY!=0)
+                    //{
+                    //    Detail.TranslateTo(0, 0);
+                    //}
+                    Detail.Animate("HeightChange", _ =>
+                    {
                         Detail.HeightRequest = _;
                         this.ForceUpdateSize();
                     }, 0d, DetailHeight);
                 }
                 else
                 {
-                    Detail.Animate("HeightChangeBack", _ => {
+                    Detail.Animate("HeightChangeBack", _ =>
+                    {
                         Detail.HeightRequest = _;
                         this.ForceUpdateSize();
                     }, DetailHeight, 0d);
+                    //if (Detail.Height > 0)
+                    //{
+                    //    Detail.TranslateTo(0, -Detail.Height).ContinueWith(_ => Device.BeginInvokeOnMainThread(() => Detail.IsVisible = IsDetailShown));
+                    //}
+                    Task.Delay(250).ContinueWith(_ => Device.BeginInvokeOnMainThread(() => Detail.IsVisible = IsDetailShown));
                 }
+                var height = Detail.Height;
             }
         }
         private static void OnIsDetailShownChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            (bindable as MasterDetailCell).ChangedDetailVisibility();
+            (bindable as ExpanxibleCell).ChangedDetailVisibility();
         }
         private View CreateContent()
         {
