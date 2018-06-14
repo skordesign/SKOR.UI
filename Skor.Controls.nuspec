@@ -30,6 +30,9 @@
       - BindableStackLayout (WIP)
       - GradientFrame support image overlay now (Android)
       - GradientButton and GradientTextButton on UWP use Reveal Highlight (Fluent Design)
+      [0.0.2-alpha1]
+      - Add GradientToggleButton (Android and UWP)
+      - Add ExpanxibleCell (Android, iOS, UWP)
     </releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>Skor XamUI Xamarin.Forms Controls</tags>
