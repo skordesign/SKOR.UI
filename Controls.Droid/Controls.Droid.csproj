@@ -129,6 +129,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassicEntryRenderer.cs" />
     <Compile Include="Extensions\AngleExtension.cs" />
     <Compile Include="Extensions\BackgroundExtension.cs" />
     <Compile Include="Controls.cs" />
