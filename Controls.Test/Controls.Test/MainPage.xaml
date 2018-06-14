@@ -69,6 +69,9 @@
                                                ToggleTextColor="White"
                                                HorizontalOptions="StartAndExpand"
                                                FontSize="Large"
+                                               TextColor="Black"
+                                               HeightRequest="48"
+                                               WidthRequest="100"
                                                ToggleCenterColor="#c471ed"
                                                ToggleEndColor="#f64f59">
                 </controls:GradientToggleButton>
@@ -77,8 +80,10 @@
                                                ToggleStartColor="#2980B9"
                                                RippleColor="#12c2e9"
                                                Image="test.jpg"
+                                               HeightRequest="48"
                                                HasShadow="False"
                                                CornerRadius="48"
+                                               WidthRequest="100"
                                                ToggleTextColor="White"
                                                HorizontalOptions="StartAndExpand"
                                                FontSize="Large"

@@ -20,7 +20,7 @@ namespace Skor.Controls.UWP
         private Button nButton;
         protected override void OnElementChanged(ElementChangedEventArgs<GradientToggleButton> e)
         {
-            base.OnElementChanged(e);
+            //base.OnElementChanged(e);
             if (e.NewElement != null)
                 button = e.NewElement;
             nButton = new Button
@@ -40,7 +40,7 @@ namespace Skor.Controls.UWP
             base.OnElementPropertyChanged(sender, e);
             if (e.PropertyName == "Height" || e.PropertyName == "Width" || e.PropertyName == "Image")
             {
-                if (button.Image != null && !string.IsNullOrEmpty(button.Image.File))
+                if (button.Image != null && !string.IsNullOrEmpty(button.Image.File) && button.IsToggled)
                 {
                     RenderImage();
                 }
@@ -55,17 +55,19 @@ namespace Skor.Controls.UWP
             var grid = new Grid();
             var imageBrush = new ImageBrush();
             imageBrush.ImageSource = new BitmapImage(new System.Uri(this.BaseUri, $"/Assets/{button.Image.File}"));
-            var rect = new Rectangle();
-            rect.Width = button.Width > 0 ? button.Width : DEFAULT_WIDTH;
-            rect.Height = button.Height > 0 ? button.Height : DEFAULT_HEIGHT;
-            rect.Stretch = Stretch.Fill;
-            rect.Fill = imageBrush;
-            rect.Opacity = 0.2;
+            var rect = new Rectangle
+            {
+                Width = button.Width > 0 ? button.Width : DEFAULT_WIDTH,
+                Height = button.Height > 0 ? button.Height : DEFAULT_HEIGHT,
+                Stretch = Stretch.Fill,
+                Fill = imageBrush,
+                Opacity = 0.2
+            };
             grid.Children.Add(rect);
             grid.Children.Add(new TextBlock
             {
                 Text = button.Text,
-                Foreground = new SolidColorBrush(button.TextColor.ToWindows()),
+                Foreground = new SolidColorBrush(button.ToggleTextColor.ToWindows()),
                 VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Center,
                 HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Center
             });
@@ -73,21 +75,13 @@ namespace Skor.Controls.UWP
         }
         void RenderContent()
         {
-            var grid = new Grid();
-            var rect = new Rectangle();
-            rect.Width = button.Width > 0 ? button.Width : DEFAULT_WIDTH;
-            rect.Height = button.Height > 0 ? button.Height : DEFAULT_HEIGHT;
-            rect.Stretch = Stretch.Fill;
-            rect.Opacity = 0;
-            grid.Children.Add(rect);
-            grid.Children.Add(new TextBlock
+            nButton.Content = new TextBlock
             {
                 Text = button.Text,
                 Foreground = new SolidColorBrush(button.TextColor.ToWindows()),
                 VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Center,
                 HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Center
-            });
-            nButton.Content = grid;
+            };
         }
         private void NButton_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
