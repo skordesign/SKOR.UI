@@ -16,9 +16,11 @@
                             </Frame>
                         </c:MasterDetailCell.Master>
                         <c:MasterDetailCell.Detail>
-                            <Frame BackgroundColor="Gray" Margin="8">
-                                <Label TextColor="White"
-                                       Text="{Binding Index}" />
+                            <Frame BackgroundColor="LightGray">
+                                <Grid>
+                                    <Label TextColor="White"
+                                           Text="{Binding Index}" />
+                                </Grid>
                             </Frame>
                         </c:MasterDetailCell.Detail>
                     </c:MasterDetailCell>

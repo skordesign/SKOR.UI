@@ -7,22 +7,6 @@ namespace Skor.Controls
 {
     public class MasterDetailCell : ViewCell
     {
-        public MasterDetailCell()
-        {
-            this.PropertyChanged += this.MasterDetailCell_PropertyChanged;
-        }
-
-        private void MasterDetailCell_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == nameof(Height))
-            {
-                if (Master != null)
-                    Master.HeightRequest = Height;
-                if (Detail != null)
-                    Detail.Margin = new Thickness(0, Height - 8, 0, 0);
-            }
-        }
-
         public bool TapMasterToShowDetail
         {
             get; set;
@@ -87,8 +71,21 @@ namespace Skor.Controls
             masterTap.Tapped += (s, e) => ShowDetail();
             Master.GestureRecognizers.Add(masterTap);
             Master.VerticalOptions = LayoutOptions.Start;
+            Master.PropertyChanged += this.Master_PropertyChanged;
             AddToContent();
         }
+
+        private void Master_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(Master.Height))
+            {
+                if (Detail != null)
+                {
+                    Detail.Margin = new Thickness(Detail.Margin.Left, Master.Height - 16, Detail.Margin.Right, Detail.Margin.Bottom);
+                }
+            }
+        }
+
         private void ShowDetail()
         {
             if (TapMasterToShowDetail)
@@ -102,6 +99,9 @@ namespace Skor.Controls
             if (this.View == null)
                 this.View = CreateContent();
             Detail.VerticalOptions = LayoutOptions.Start;
+            Detail.HeightRequest = 0;
+            Detail.MinimumHeightRequest = 0;
+            Detail.Margin = new Thickness(Detail.Margin.Left, Height - 8, Detail.Margin.Right, Detail.Margin.Bottom);
             AddToContent();
         }
         private void ChangedDetailVisibility()
