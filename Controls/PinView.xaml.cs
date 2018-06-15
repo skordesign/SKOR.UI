@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,11 +10,12 @@ using Xamarin.Forms.Xaml;
 
 namespace Skor.Controls
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class PinView : ContentView
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class PinView : ContentView
+    {
         private const int GRID_WIDTH = 32;
-        private const int NODE_WIDTH = 24;
+        private const int MIN_DOT_SIZE = 24;
+        private const int MIN_BUTTON_SIZE = 48;
         private List<Frame> frames;
         public static readonly BindableProperty FinishCommandProperty =
             BindableProperty.Create(nameof(FinishCommand), typeof(ICommand), typeof(PinView), null);
@@ -22,6 +24,40 @@ namespace Skor.Controls
         {
             get { return (ICommand)GetValue(FinishCommandProperty); }
             set { SetValue(FinishCommandProperty, value); }
+        }
+        public static readonly BindableProperty ThemeColorProperty =
+            BindableProperty.Create(nameof(ThemeColor), typeof(Color), typeof(PinView), Color.Accent);
+
+        public Color ThemeColor
+        {
+            get { return (Color)GetValue(ThemeColorProperty); }
+            set { SetValue(ThemeColorProperty, value); }
+        }
+        public static readonly BindableProperty ButtonSizeProperty = BindableProperty.Create(nameof(ButtonSize),
+            typeof(int), typeof(PinView), MIN_BUTTON_SIZE, BindingMode.OneWay, propertyChanged: OnPinChanged);
+        public int ButtonSize
+        {
+            get { return (int)GetValue(ButtonSizeProperty); }
+            set
+            {
+                if (value > MIN_BUTTON_SIZE)
+                {
+                    SetValue(ButtonSizeProperty, value);
+                }
+            }
+        }
+        public static readonly BindableProperty DotSizeProperty = BindableProperty.Create(nameof(DotSize),
+            typeof(int), typeof(PinView), MIN_DOT_SIZE, BindingMode.OneWay, propertyChanged: OnPinChanged);
+        public int DotSize
+        {
+            get { return (int)GetValue(DotSizeProperty); }
+            set
+            {
+                if (value > MIN_DOT_SIZE)
+                {
+                    SetValue(DotSizeProperty, value);
+                }
+            }
         }
         public static readonly BindableProperty ValueProperty = BindableProperty.Create(nameof(Value),
             typeof(string), typeof(PinView), string.Empty, BindingMode.OneWay, propertyChanged: OnPinChanged);
@@ -105,7 +141,7 @@ namespace Skor.Controls
         }
         public void SetPinColor(int index)
         {
-            frames[index].BackgroundColor = Color.Red;
+            frames[index].BackgroundColor = ThemeColor;
         }
         private void InitLabel()
         {
@@ -113,6 +149,12 @@ namespace Skor.Controls
         }
         private void CreatePinGrid()
         {
+            float cornerRadius = 0f;
+            Debug.WriteLine("OS: " + Device.RuntimePlatform);
+            if (Device.RuntimePlatform != "UWP")
+            {
+                cornerRadius = MIN_DOT_SIZE / 2;
+            }
             frames = new List<Frame>();
             int pinLength = PinLength;
             for (int i = 0; i < pinLength; i++)
@@ -121,15 +163,15 @@ namespace Skor.Controls
                 PinGrid.ColumnDefinitions.Add(new ColumnDefinition());
                 var node = new Frame
                 {
-                    WidthRequest = NODE_WIDTH,
-                    HeightRequest = NODE_WIDTH,
+                    WidthRequest = MIN_DOT_SIZE,
+                    HeightRequest = MIN_DOT_SIZE,
                     BackgroundColor = Color.White,
-                    CornerRadius = NODE_WIDTH / 2,
+                    CornerRadius = cornerRadius,
                     VerticalOptions = LayoutOptions.Center,
                     HorizontalOptions = LayoutOptions.Center,
                     Padding = 0,
                     HasShadow = false,
-                    BorderColor = Color.Red
+                    BorderColor = ThemeColor
                 };
                 PinGrid.Children.Add(node, i, 0);
                 frames.Add(node);

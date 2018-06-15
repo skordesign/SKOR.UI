@@ -4,8 +4,7 @@
              xmlns:c="clr-namespace:Skor.Controls;assembly=Skor.Controls"
              x:Class="Controls.Test.ListDemoPage">
     <ContentPage.Content>
-        <c:PinView />
-        <!--<ListView ItemsSource="{Binding Items}" HasUnevenRows="True">
+        <ListView ItemsSource="{Binding Items}" HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <c:ExpanxibleCell IsDetailShown="{Binding IsShow}"
@@ -27,6 +26,6 @@
                     </c:ExpanxibleCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>-->
+        </ListView>
     </ContentPage.Content>
 </ContentPage>

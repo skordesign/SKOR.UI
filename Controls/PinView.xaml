@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Skor.Controls.PinView">
+             x:Class="Skor.Controls.PinView"
+             x:Name="parent">
     <ContentView.Resources>
         <ResourceDictionary>
             <Style TargetType="Button">
                 <Setter Property="CornerRadius"
                         Value="24" />
                 <Setter Property="WidthRequest"
-                        Value="48" />
+                        Value="{Binding Source=parent, Path=ButtonSize}" />
                 <Setter Property="TextColor"
                         Value="White" />
                 <Setter Property="VerticalOptions"
