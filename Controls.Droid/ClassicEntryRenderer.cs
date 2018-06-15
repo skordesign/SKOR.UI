@@ -13,7 +13,7 @@ using Android.Widget;
 using Skor.Controls.Droid.Extensions;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-
+[assembly: ExportRenderer(typeof(global::Skor.Controls.ClassicEntry), typeof(global::Skor.Controls.Droid.ClassicEntryRenderer))]
 namespace Skor.Controls.Droid
 {
     public class ClassicEntryRenderer: EntryRenderer
@@ -28,19 +28,23 @@ namespace Skor.Controls.Droid
             if (e.NewElement != null)
                 classicEntry = e.NewElement as ClassicEntry;
             Control.Background = CreateBackground();
+            InitStyles();
         }
-
+        void InitStyles()
+        {
+            Control.SetPadding(Control.PaddingStart + (int)classicEntry.CornerRadius, Control.PaddingTop, Control.PaddingEnd + (int)classicEntry.CornerRadius, Control.PaddingBottom);
+            Control.Hint = classicEntry.Placeholder;
+            Control.SetHintTextColor(classicEntry.PlaceholderColor.ToAndroid());
+        }
         private Drawable CreateBackground()
         {
-            var normalDrawable = BackgroundExtension.CreateBackgroundGradient(classicEntry.BackgroundColor.ToAndroid(),
-                classicEntry.BackgroundColor.ToAndroid(),
-                classicEntry.BackgroundColor.ToAndroid(),
-                (float)classicEntry.CornerRadius,
-                GradientDrawable.Orientation.BlTr);
+            var normalDrawable = BackgroundExtension.CreateBackgroundColor(classicEntry.BackgroundColor.ToAndroid(), (float)classicEntry.CornerRadius);
+            var focusDrawable = BackgroundExtension.CreateBackgroundColor(classicEntry.FocusColor.ToAndroid(), (float)classicEntry.CornerRadius);
+            var disabledDrawable = BackgroundExtension.CreateBackgroundColor(classicEntry.DisabledColor.ToAndroid(), (float)classicEntry.CornerRadius);
             var statesListDrawable = new StateListDrawable();
-            //statesListDrawable.AddState(new int[] { -Android.Resource.Attribute.StateEnabled }, layerDisabled);
-            //statesListDrawable.AddState(new int[] { Android.Resource.Attribute.StatePressed }, layer);
-            //statesListDrawable.AddState(new int[] { Android.Resource.Attribute.StateEnabled }, layer);
+            statesListDrawable.AddState(new int[] { Android.Resource.Attribute.StateFocused }, focusDrawable);
+            statesListDrawable.AddState(new int[] { -Android.Resource.Attribute.StateEnabled }, disabledDrawable);
+            statesListDrawable.AddState(new int[] { -Android.Resource.Attribute.StateFirst }, normalDrawable);
             return statesListDrawable;
         }
     }

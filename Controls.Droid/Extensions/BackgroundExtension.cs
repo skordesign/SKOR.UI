@@ -27,6 +27,14 @@ namespace Skor.Controls.Droid.Extensions
                 TileMode.Mirror
                 );
         }
+        public static Drawable CreateBackgroundColor(Color color, float cornerRadius)
+        {
+            GradientDrawable drawble = new GradientDrawable();
+            drawble.SetShape(ShapeType.Rectangle);
+            drawble.SetCornerRadius(cornerRadius);
+            drawble.SetColors(new int[] { color, color });
+            return drawble;
+        }
         public static Drawable CreateBackgroundGradient(Color startColor, Color endColor, Color centerColor,
             float cornerRadius, GradientDrawable.Orientation orientation)
         {

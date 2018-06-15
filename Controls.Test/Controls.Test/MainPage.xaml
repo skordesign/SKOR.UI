@@ -27,7 +27,7 @@
                               EndColor="#f64f59"
                               Angle="TopBottom">
         <StackLayout >
-
+        
             <Label HorizontalOptions="Center">
                 <Label.Text>
                     <OnPlatform x:TypeArguments="x:String"
@@ -36,6 +36,8 @@
                                 WinPhone="Windows"></OnPlatform>
                 </Label.Text>
             </Label>
+            <controls:ClassicEntry IsEnabled="False" Placeholder="Disabled" PlaceholderColor="Black" />
+            <controls:ClassicEntry CornerRadius="20"/>
             <controls:BindableStackLayout HeightRequest="48" ItemsSource="{Binding Items}" Orientation="Horizontal">
                 <controls:BindableStackLayout.ItemTemplate>
                     <DataTemplate>
