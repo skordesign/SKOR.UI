@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Controls.Test"
@@ -7,6 +7,7 @@
     <ContentPage.Resources>
         <OnPlatform x:Key="FF" x:TypeArguments="x:String">
             <On Platform="Android">Raleway-Light.ttf#Raleway Light</On>
+            <On Platform="iOS">Raleway-Light</On>
         </OnPlatform>
         <Style TargetType="controls:GradientTextButton">
             <Setter Property="FontFamily"

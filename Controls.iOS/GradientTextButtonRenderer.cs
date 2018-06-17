@@ -32,8 +32,6 @@ namespace Skor.Controls.iOS
                 button.HeightRequest > 30 ? button.HeightRequest : DEFAULT_HEIGHT);
             button.CornerRadius = button.CornerRadius > (int)(nButton.Frame.Height / 2) ? (int)nButton.Frame.Height / 2 : button.CornerRadius;
             nButton.Layer.CornerRadius = button.CornerRadius;
-            nButton.SetTitle(button.Text, UIControlState.Normal);
-            nButton.SetTitleColor(button.TextColor.ToUIColor(), UIControlState.Normal);
             nButton.Layer.MasksToBounds = true;
             nButton.TouchUpInside += Handler;
             var longPress = new UILongPressGestureRecognizer();
@@ -55,27 +53,43 @@ namespace Skor.Controls.iOS
         }
         void CreateBorder()
         {
-            // Gradient border
-            nfloat borderWidth = (nfloat)button.BorderWidth;
-            float width = (float)button.Width;
-            float height = (float)button.Height;
-            nButton.BackgroundColor = UIColor.Clear;
-            nButton.Layer.BorderColor = UIColor.Clear.CGColor;
-            nButton.Layer.BorderWidth = (nfloat)button.BorderWidth;
+            var direction = button.Angle.ToiOS();
+
+            var gradient = new CAGradientLayer();
+            gradient.StartPoint = direction[0];
+            gradient.EndPoint = direction[1];
+            gradient.Frame = new CGRect(0,0, button.Width,button.Height);
+            gradient.Colors = new[] {button.StartColor.ToCGColor(), button.CenterColor.ToCGColor(), button.EndColor.ToCGColor()};
+                
             var shape = new CAShapeLayer();
-            shape.LineWidth = borderWidth;
-            shape.Path =  UIBezierPath.FromRect(nButton.Bounds).CGPath;
+            shape.LineWidth =(float) button.BorderWidth;
+            shape.Path = UIBezierPath.FromRect(new CGRect(0, 0, button.Width, button.Height)).CGPath;
             shape.StrokeColor = UIColor.Black.CGColor;
             shape.FillColor = UIColor.Clear.CGColor;
-            var gradient = BackgroundExtension.CreateBackgroundGradientLayer(height,width, button.CornerRadius, button.StartColor.ToUIColor(),
-                button.EndColor.ToUIColor(), button.CenterColor.ToUIColor(), button.Angle.ToiOS());
             gradient.Mask = shape;
-            //Solid background
-            CALayer cALayer = new CALayer();
-            cALayer.BackgroundColor = button.BackgroundColor.ToCGColor();
-            cALayer.Frame = new CGRect(borderWidth, borderWidth, width - borderWidth * 2, height - borderWidth * 2);
+            
             nButton.Layer.AddSublayer(gradient);
-            nButton.Layer.AddSublayer(cALayer);
+
+
+            var gradientText = new CAGradientLayer();
+            gradientText.StartPoint = direction[0];
+            gradientText.EndPoint = direction[1];
+            gradientText.Colors = new []{button.StartColor.ToCGColor(),button.CenterColor.ToCGColor(),button.EndColor.ToCGColor()};
+            gradientText.Bounds = new CGRect(0, 0, button.Width, button.Height);
+            UIGraphics.BeginImageContextWithOptions(gradientText.Bounds.Size, true,(float) 0.0);
+            var context = UIGraphics.GetCurrentContext();
+            gradientText.RenderInContext(context);
+            var image = UIGraphics.GetImageFromCurrentImageContext();
+            UIGraphics.EndImageContext();
+
+            // Create a label and add it as a subview
+            var label = new UILabel(new CGRect(0, 0, button.Width, button.Height));
+            label.Text = button.Text;
+            label.Font = button.Font.ToUIFont();
+            label.TextAlignment = UITextAlignment.Center;
+            label.TextColor = new UIColor(image);
+
+            nButton.AddSubview(label);
         }
     }
 }
