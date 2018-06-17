@@ -38,6 +38,7 @@
             </Label>
             <controls:ClassicEntry IsEnabled="False" Placeholder="Disabled" PlaceholderColor="Black" />
             <controls:ClassicEntry CornerRadius="20"/>
+            <controls:IconEntry Icon="testicon.png"/>
             <controls:BindableStackLayout HeightRequest="48" ItemsSource="{Binding Items}" Orientation="Horizontal">
                 <controls:BindableStackLayout.ItemTemplate>
                     <DataTemplate>
