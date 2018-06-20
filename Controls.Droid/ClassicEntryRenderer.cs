@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
+﻿using Android.Content;
 using Android.Graphics.Drawables;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Skor.Controls.Droid.Extensions;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -18,7 +8,7 @@ namespace Skor.Controls.Droid
 {
     public class ClassicEntryRenderer: EntryRenderer
     {
-        private ClassicEntry classicEntry;
+        private ClassicEntry entry;
         public ClassicEntryRenderer(Context context):base(context)
         {
         }
@@ -26,21 +16,24 @@ namespace Skor.Controls.Droid
         {
             base.OnElementChanged(e);
             if (e.NewElement != null)
-                classicEntry = e.NewElement as ClassicEntry;
+                entry = e.NewElement as ClassicEntry;
             Control.Background = CreateBackground();
             InitStyles();
         }
         void InitStyles()
         {
-            Control.SetPadding(Control.PaddingStart + (int)classicEntry.CornerRadius, Control.PaddingTop, Control.PaddingEnd + (int)classicEntry.CornerRadius, Control.PaddingBottom);
-            Control.Hint = classicEntry.Placeholder;
-            Control.SetHintTextColor(classicEntry.PlaceholderColor.ToAndroid());
+            Control.SetPadding(Control.PaddingStart + (int)entry.CornerRadius, Control.PaddingTop, Control.PaddingEnd + (int)entry.CornerRadius, Control.PaddingBottom);
+            Control.Hint = entry.Placeholder;
+            var font =  Font.OfSize(entry.FontFamily, entry.FontSize);
+            font.WithAttributes(entry.FontAttributes);
+            Control.Typeface = font.ToTypeface();
+            Control.SetHintTextColor(entry.PlaceholderColor.ToAndroid());
         }
         private Drawable CreateBackground()
         {
-            var normalDrawable = BackgroundExtension.CreateBackgroundColor(classicEntry.BackgroundColor.ToAndroid(), (float)classicEntry.CornerRadius);
-            var focusDrawable = BackgroundExtension.CreateBackgroundColor(classicEntry.FocusColor.ToAndroid(), (float)classicEntry.CornerRadius);
-            var disabledDrawable = BackgroundExtension.CreateBackgroundColor(classicEntry.DisabledColor.ToAndroid(), (float)classicEntry.CornerRadius);
+            var normalDrawable = BackgroundExtension.CreateBackgroundColor(entry.BackgroundColor.ToAndroid(), (float)entry.CornerRadius);
+            var focusDrawable = BackgroundExtension.CreateBackgroundColor(entry.FocusColor.ToAndroid(), (float)entry.CornerRadius);
+            var disabledDrawable = BackgroundExtension.CreateBackgroundColor(entry.DisabledColor.ToAndroid(), (float)entry.CornerRadius);
             var statesListDrawable = new StateListDrawable();
             statesListDrawable.AddState(new int[] { Android.Resource.Attribute.StateFocused }, focusDrawable);
             statesListDrawable.AddState(new int[] { -Android.Resource.Attribute.StateEnabled }, disabledDrawable);

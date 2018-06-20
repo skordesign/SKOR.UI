@@ -6,12 +6,12 @@ using static Xamarin.Forms.Button.ButtonContentLayout;
 
 namespace Skor.Controls
 {
-    public class IconEntry:Entry
+    public class FloatingLabelEntry:Entry
     {
         public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create(
        nameof(CornerRadius),
        typeof(double),
-       typeof(IconEntry),
+       typeof(FloatingLabelEntry),
        4d);
         public double CornerRadius
         {
@@ -21,7 +21,7 @@ namespace Skor.Controls
         public static readonly BindableProperty FocusColorProperty = BindableProperty.Create(
         nameof(FocusColor),
         typeof(Color),
-        typeof(IconEntry),
+        typeof(FloatingLabelEntry),
         Color.White);
         public Color FocusColor
         {
@@ -31,7 +31,7 @@ namespace Skor.Controls
         public new static readonly BindableProperty BackgroundColorProperty = BindableProperty.Create(
       nameof(BackgroundColor),
       typeof(Color),
-      typeof(IconEntry),
+      typeof(FloatingLabelEntry),
       Color.LightGray);
         public new Color BackgroundColor
         {
@@ -41,7 +41,7 @@ namespace Skor.Controls
         public static readonly BindableProperty DisabledColorProperty = BindableProperty.Create(
        nameof(DisabledColor),
        typeof(Color),
-       typeof(IconEntry),
+       typeof(FloatingLabelEntry),
        Color.WhiteSmoke);
         public Color DisabledColor
         {
@@ -51,7 +51,7 @@ namespace Skor.Controls
         public static readonly BindableProperty IconProperty = BindableProperty.Create(
         nameof(Icon),
         typeof(FileImageSource),
-        typeof(IconEntry),
+        typeof(FloatingLabelEntry),
         default(FileImageSource));
         public FileImageSource Icon
         {
@@ -61,7 +61,7 @@ namespace Skor.Controls
         public static readonly BindableProperty IconPositionProperty = BindableProperty.Create(
         nameof(IconPosition),
         typeof(ImagePosition),
-        typeof(IconEntry),
+        typeof(FloatingLabelEntry),
         ImagePosition.Left);
         public ImagePosition IconPosition
         {

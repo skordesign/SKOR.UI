@@ -129,7 +129,7 @@
     <Compile Include="GradientFrameRenderer.cs" />
     <Compile Include="GradientTextButtonRenderer.cs" />
     <Compile Include="GradientToggleButtonRenderer.cs" />
-    <Compile Include="IconEntryRenderer.cs" />
+    <Compile Include="FloatingLabelEntryRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions\RippleExtension.cs" />

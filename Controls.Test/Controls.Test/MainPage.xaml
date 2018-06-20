@@ -9,6 +9,14 @@
             <On Platform="Android">Raleway-Light.ttf#Raleway Light</On>
             <On Platform="iOS">Raleway-Light</On>
         </OnPlatform>
+        <Style TargetType="controls:ClassicEntry">
+            <Setter Property="FontFamily"
+                    Value="{StaticResource FF}" />
+        </Style>
+        <Style TargetType="controls:FloatingLabelEntry">
+            <Setter Property="FontFamily"
+                    Value="{StaticResource FF}" />
+        </Style>
         <Style TargetType="controls:GradientTextButton">
             <Setter Property="FontFamily"
                     Value="{StaticResource FF}" />
@@ -22,143 +30,152 @@
                     Value="{StaticResource FF}" />
         </Style>
     </ContentPage.Resources>
-    <controls:GradientFrame   Image="test.jpg"
-                              StartColor="#12c2e9"
-                              CenterColor="#c471ed"
-                              EndColor="#f64f59"
-                              Angle="TopBottom">
-        <StackLayout >
-        
-            <Label HorizontalOptions="Center">
-                <Label.Text>
-                    <OnPlatform x:TypeArguments="x:String"
-                                Android="Android"
-                                iOS="iOS"
-                                WinPhone="Windows"></OnPlatform>
-                </Label.Text>
-            </Label>
-            <controls:ClassicEntry IsEnabled="False" Placeholder="Disabled" PlaceholderColor="Black" />
-            <controls:ClassicEntry CornerRadius="20"/>
-            <controls:IconEntry Icon="testicon.png"/>
-            <controls:BindableStackLayout HeightRequest="48" ItemsSource="{Binding Items}" Orientation="Horizontal">
-                <controls:BindableStackLayout.ItemTemplate>
-                    <DataTemplate>
-                        <Grid BackgroundColor="Gray">
-                            <Label Text="{Binding Index}" TextColor="White"/>
-                        </Grid>
-                    </DataTemplate>
-                </controls:BindableStackLayout.ItemTemplate>
-            </controls:BindableStackLayout>
-            <controls:GradientTextButton BackgroundColor="White"
-                                         StartColor="#12c2e9"
-                                         Clicked="Add"
-                                         Text="Add"
-                                         HasShadow="False"
-                                         HeightRequest="48"
-                                         CornerRadius="0"
-                                         WidthRequest="100"
-                                         CenterColor="#c471ed"
-                                         EndColor="#f64f59">
-                <controls:GradientTextButton.BorderWidth>
-                    <OnPlatform x:TypeArguments="x:Double" Android="8" iOS="2" WinPhone="2"/>
-                </controls:GradientTextButton.BorderWidth>
-            </controls:GradientTextButton>
-            <StackLayout Orientation="Horizontal">
-                <controls:GradientToggleButton Text="Toggle"
-                                               IsToggled="False"
-                                               ToggleStartColor="#2980B9"
-                                               RippleColor="#12c2e9"
-                                               Image="test.jpg"
-                                               CornerRadius="48"
-                                               ToggleTextColor="White"
-                                               HorizontalOptions="StartAndExpand"
-                                               FontSize="Large"
-                                               TextColor="Black"
-                                               HeightRequest="48"
-                                               WidthRequest="100"
-                                               ToggleCenterColor="#c471ed"
-                                               ToggleEndColor="#f64f59">
-                </controls:GradientToggleButton>
-                <controls:GradientToggleButton Text="Toggle"
-                                               IsToggled="False"
-                                               ToggleStartColor="#2980B9"
-                                               RippleColor="#12c2e9"
-                                               Image="test.jpg"
-                                               HeightRequest="48"
-                                               HasShadow="False"
-                                               CornerRadius="48"
-                                               WidthRequest="100"
-                                               ToggleTextColor="White"
-                                               HorizontalOptions="StartAndExpand"
-                                               FontSize="Large"
-                                               ToggleCenterColor="#c471ed"
-                                               ToggleEndColor="#c2e59c">
-                </controls:GradientToggleButton>
-            </StackLayout>
-            <controls:GradientTextButton BackgroundColor="White"
-                                         BorderWidth="2"
-                                         Clicked="Remove"
-                                         StartColor="#2980B9"
-                                         Text="Remove"
-                                         HeightRequest="48"
-                                         WidthRequest="160"
-                                         HorizontalOptions="StartAndExpand"
+    <ScrollView>
+        <controls:GradientFrame   Image="test.jpg"
+                                  StartColor="#12c2e9"
+                                  CenterColor="#c471ed"
+                                  EndColor="#f64f59"
+                                  Angle="TopBottom">
+            <StackLayout>
+                <Label HorizontalOptions="Center">
+                    <Label.Text>
+                        <OnPlatform x:TypeArguments="x:String"
+                                    Android="Android"
+                                    iOS="iOS"
+                                    WinPhone="Windows"></OnPlatform>
+                    </Label.Text>
+                </Label>
+                <controls:ClassicEntry IsEnabled="False"
+                                       Placeholder="Disabled"
+                                       PlaceholderColor="Black" />
+                <controls:ClassicEntry CornerRadius="20" />
+                <controls:FloatingLabelEntry Icon="testicon.png"
+                                             TextColor="Yellow"
+                                             Placeholder="What"
+                                             PlaceholderColor="Yellow" />
+                <controls:BindableStackLayout HeightRequest="48"
+                                              ItemsSource="{Binding Items}"
+                                              Orientation="Horizontal">
+                    <controls:BindableStackLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid BackgroundColor="Gray">
+                                <Label Text="{Binding Index}"
+                                       TextColor="White" />
+                            </Grid>
+                        </DataTemplate>
+                    </controls:BindableStackLayout.ItemTemplate>
+                </controls:BindableStackLayout>
+                <controls:GradientTextButton BackgroundColor="White"
+                                             StartColor="#12c2e9"
+                                             Clicked="Add"
+                                             Text="Add"
+                                             HasShadow="False"
+                                             HeightRequest="48"
+                                             CornerRadius="0"
+                                             WidthRequest="100"
+                                             CenterColor="#c471ed"
+                                             EndColor="#f64f59">
+                    <controls:GradientTextButton.BorderWidth>
+                        <OnPlatform x:TypeArguments="x:Double"
+                                    Android="8"
+                                    iOS="2"
+                                    WinPhone="2" />
+                    </controls:GradientTextButton.BorderWidth>
+                </controls:GradientTextButton>
+                <StackLayout Orientation="Horizontal">
+                    <controls:GradientToggleButton Text="Toggle"
+                                                   IsToggled="False"
+                                                   ToggleStartColor="#2980B9"
+                                                   RippleColor="#12c2e9"
+                                                   Image="test.jpg"
+                                                   CornerRadius="48"
+                                                   ToggleTextColor="White"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   FontSize="Large"
+                                                   TextColor="Black"
+                                                   HeightRequest="48"
+                                                   WidthRequest="100"
+                                                   ToggleCenterColor="#c471ed"
+                                                   ToggleEndColor="#f64f59"></controls:GradientToggleButton>
+                    <controls:GradientToggleButton Text="Toggle"
+                                                   IsToggled="False"
+                                                   ToggleStartColor="#2980B9"
+                                                   RippleColor="#12c2e9"
+                                                   Image="test.jpg"
+                                                   HeightRequest="48"
+                                                   HasShadow="False"
+                                                   CornerRadius="48"
+                                                   WidthRequest="100"
+                                                   ToggleTextColor="White"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   FontSize="Large"
+                                                   ToggleCenterColor="#c471ed"
+                                                   ToggleEndColor="#c2e59c"></controls:GradientToggleButton>
+                </StackLayout>
+                <controls:GradientTextButton BackgroundColor="White"
+                                             BorderWidth="2"
+                                             Clicked="Remove"
+                                             StartColor="#2980B9"
+                                             Text="Remove"
+                                             HeightRequest="48"
+                                             WidthRequest="160"
+                                             HorizontalOptions="StartAndExpand"
+                                             RippleColor="#12c2e9"
+                                             CenterColor="#c471ed"
+                                             EndColor="#f64f59">
+                    <controls:GradientTextButton.BorderWidth>
+                        <OnPlatform x:TypeArguments="x:Double"
+                                    Android="8"
+                                    iOS="2"
+                                    WinPhone="2" />
+                    </controls:GradientTextButton.BorderWidth>
+                </controls:GradientTextButton>
+                <controls:GradientButton Text="JShine"
                                          RippleColor="#12c2e9"
+                                         TextColor="White"
+                                         FontSize="Medium"
+                                         Image="test.jpg"
+                                         StartColor="#12c2e9"
                                          CenterColor="#c471ed"
                                          EndColor="#f64f59">
-                <controls:GradientTextButton.BorderWidth>
-                    <OnPlatform x:TypeArguments="x:Double"
-                                Android="8"
-                                iOS="2"
-                                WinPhone="2" />
-                </controls:GradientTextButton.BorderWidth>
-            </controls:GradientTextButton>
-            <controls:GradientButton Text="JShine"
-                                     RippleColor="#12c2e9"
-                                     TextColor="White"
-                                     FontSize="Medium"
-                                     Image="test.jpg"
-                                     StartColor="#12c2e9"
-                                     CenterColor="#c471ed"
-                                     EndColor="#f64f59">
-                <controls:GradientButton.FontFamily>
-                    <OnPlatform x:TypeArguments="x:String"
-                                WinPhone="/Assets/Fonts/Raleway-Light.ttf#Raleway"></OnPlatform>
-                </controls:GradientButton.FontFamily>
-            </controls:GradientButton>
-            <controls:GradientButton Text="Goto List"
-                                     Image="test.jpg"
-                                     FontSize="Medium"
-                                     Clicked="GradientTextButton_Clicked"
-                                     CornerRadius="12"
-                                     HorizontalOptions="FillAndExpand"
-                                     HeightRequest="48"
-                                     WidthRequest="100"
-                                     TextColor="White"
-                                     HasShadow="False"
-                                     StartColor="#aa4b6b"
-                                     CenterColor="#6b6b83"
-                                     EndColor="#3b8d99" />
-            <controls:GradientButton Text="Cool sky"
-                                     Image="test.jpg"
-                                     CornerRadius="24"
-                                     HorizontalOptions="FillAndExpand"
-                                     HeightRequest="48"
-                                     WidthRequest="100"
-                                     TextColor="White"
-                                     StartColor="#2980B9"
-                                     CenterColor="#6DD5FA"
-                                     EndColor="#FFFFFF" />
-            <controls:GradientButton Text="Green and blue"
-                                     Image="test.jpg"
-                                     CornerRadius="24"
-                                     HorizontalOptions="FillAndExpand"
-                                     HeightRequest="48"
-                                     WidthRequest="100"
-                                     TextColor="White"
-                                     StartColor="#c2e59c"
-                                     EndColor="#64b3f4" />
-        </StackLayout>
-    </controls:GradientFrame>
-
+                    <controls:GradientButton.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String"
+                                    WinPhone="/Assets/Fonts/Raleway-Light.ttf#Raleway"></OnPlatform>
+                    </controls:GradientButton.FontFamily>
+                </controls:GradientButton>
+                <controls:GradientButton Text="Goto List"
+                                         Image="test.jpg"
+                                         FontSize="Medium"
+                                         Clicked="GradientTextButton_Clicked"
+                                         CornerRadius="12"
+                                         HorizontalOptions="FillAndExpand"
+                                         HeightRequest="48"
+                                         WidthRequest="100"
+                                         TextColor="White"
+                                         HasShadow="False"
+                                         StartColor="#aa4b6b"
+                                         CenterColor="#6b6b83"
+                                         EndColor="#3b8d99" />
+                <controls:GradientButton Text="Cool sky"
+                                         Image="test.jpg"
+                                         CornerRadius="24"
+                                         HorizontalOptions="FillAndExpand"
+                                         HeightRequest="48"
+                                         WidthRequest="100"
+                                         TextColor="White"
+                                         StartColor="#2980B9"
+                                         CenterColor="#6DD5FA"
+                                         EndColor="#FFFFFF" />
+                <controls:GradientButton Text="Green and blue"
+                                         Image="test.jpg"
+                                         CornerRadius="24"
+                                         HorizontalOptions="FillAndExpand"
+                                         HeightRequest="48"
+                                         WidthRequest="100"
+                                         TextColor="White"
+                                         StartColor="#c2e59c"
+                                         EndColor="#64b3f4" />
+            </StackLayout>
+        </controls:GradientFrame>
+    </ScrollView>
 </ContentPage>
