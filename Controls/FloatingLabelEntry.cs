@@ -6,8 +6,38 @@ using static Xamarin.Forms.Button.ButtonContentLayout;
 
 namespace Skor.Controls
 {
-    public class FloatingLabelEntry:Entry
+    public class FloatingLabelEntry : Entry
     {
+        public static readonly BindableProperty ErrorMessageProperty = BindableProperty.Create(
+       nameof(ErrorMessage),
+       typeof(string),
+       typeof(FloatingLabelEntry),
+       string.Empty);
+        public string ErrorMessage
+        {
+            get { return (string)GetValue(ErrorMessageProperty); }
+            set { SetValue(ErrorMessageProperty, value); }
+        }
+        public static readonly BindableProperty ErrorEnabledProperty = BindableProperty.Create(
+       nameof(ErrorEnabled),
+       typeof(bool),
+       typeof(FloatingLabelEntry),
+       false);
+        public bool ErrorEnabled
+        {
+            get { return (bool)GetValue(ErrorEnabledProperty); }
+            set { SetValue(ErrorEnabledProperty, value); }
+        }
+        public static readonly BindableProperty LabelColorProperty = BindableProperty.Create(
+        nameof(LabelColor),
+        typeof(Color),
+        typeof(FloatingLabelEntry),
+        Color.Black);
+        public Color LabelColor
+        {
+            get { return (Color)GetValue(LabelColorProperty); }
+            set { SetValue(LabelColorProperty, value); }
+        }
         public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create(
        nameof(CornerRadius),
        typeof(double),

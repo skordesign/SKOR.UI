@@ -53,6 +53,7 @@
                                              TextColor="Yellow"
                                              Placeholder="What"
                                              PlaceholderColor="Yellow" />
+                <controls:FloatingLabelEntry Placeholder="what" />
                 <controls:BindableStackLayout HeightRequest="48"
                                               ItemsSource="{Binding Items}"
                                               Orientation="Horizontal">

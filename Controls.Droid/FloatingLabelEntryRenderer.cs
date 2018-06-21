@@ -6,11 +6,13 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Content.Res;
 using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.Design.Widget;
+using Android.Support.V4.View;
 using Android.Support.V7.Widget;
 using Android.Util;
 using Android.Views;
@@ -22,12 +24,12 @@ using Xamarin.Forms.Platform.Android;
 [assembly: ExportRenderer(typeof(global::Skor.Controls.FloatingLabelEntry), typeof(global::Skor.Controls.Droid.FloatingLabelEntryRenderer))]
 namespace Skor.Controls.Droid
 {
-    public class FloatingLabelEntryRenderer: ViewRenderer<FloatingLabelEntry, TextInputLayout>
+    public class FloatingLabelEntryRenderer : ViewRenderer<FloatingLabelEntry, TextInputLayout>
     {
         private FloatingLabelEntry entry;
         private TextInputLayout layout;
         private AppCompatEditText editText;
-        public FloatingLabelEntryRenderer(Context context):base(context)
+        public FloatingLabelEntryRenderer(Context context) : base(context)
         {
         }
         protected override void OnElementChanged(ElementChangedEventArgs<FloatingLabelEntry> e)
@@ -49,15 +51,44 @@ namespace Skor.Controls.Droid
             layout.Typeface = font.ToTypeface();
 
             editText = new AppCompatEditText(Context);
-            editText.LayoutParameters = new LinearLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.WrapContent);
-            editText.Typeface= font.ToTypeface();
+            var editTextParams = new LinearLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.WrapContent);
+            editText.LayoutParameters = editTextParams;
+            editText.Typeface = font.ToTypeface();
             editText.SetTextColor(entry.TextColor.ToAndroid());
             layout.AddView(editText);
+            SetInputTextLayoutColor(layout, entry.LabelColor.ToAndroid());
+        }
+        private ColorStateList CreateColorStateListForEditText() =>
+             new ColorStateList(new int[][] {
+                 //States
+             new int[] { Android.Resource.Attribute.StateFocused },
+             new int[] { -Android.Resource.Attribute.StateEnabled  },
+             new int[] { -Android.Resource.Attribute.StateFirst } },
+             //Colors
+             new int[] { entry.FocusColor.ToAndroid(),
+                 entry.DisabledColor.ToAndroid(),
+                 entry.BackgroundColor.ToAndroid() });
+
+        public void SetInputTextLayoutColor(TextInputLayout til, Android.Graphics.Color color)
+        {
+            try
+            {
+                Java.Lang.Reflect.Field fDefaultTextColor = Java.Lang.Class.FromType(typeof(TextInputLayout)).GetDeclaredField("mDefaultTextColor");
+                fDefaultTextColor.Accessible = true;
+                fDefaultTextColor.Set(til, new ColorStateList(new int[][] { new int[] { 0 } }, new int[] { entry.PlaceholderColor.ToAndroid() }));
+
+                Java.Lang.Reflect.Field fFocusedTextColor = Java.Lang.Class.FromType(typeof(TextInputLayout)).GetDeclaredField("mFocusedTextColor");
+                fFocusedTextColor.Accessible = true;
+                fFocusedTextColor.Set(til, new ColorStateList(new int[][] { new int[] { 0 } }, new int[] { entry.TextColor.ToAndroid() }));
+            }
+            catch
+            {
+            }
         }
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
-            if(e.PropertyName==nameof(entry.Height) || e.PropertyName == nameof(entry.Width))
+            if (e.PropertyName == nameof(entry.Height) || e.PropertyName == nameof(entry.Width))
             {
                 if (entry.Icon != default(FileImageSource))
                 {
@@ -67,11 +98,11 @@ namespace Skor.Controls.Droid
         }
         private void SetIcon()
         {
-           
+
         }
         void InitStyles()
         {
-         
+
         }
         private Drawable CreateBackground()
         {
@@ -82,7 +113,7 @@ namespace Skor.Controls.Droid
             statesListDrawable.AddState(new int[] { Android.Resource.Attribute.StateFocused }, focusDrawable);
             statesListDrawable.AddState(new int[] { -Android.Resource.Attribute.StateEnabled }, disabledDrawable);
             statesListDrawable.AddState(new int[] { -Android.Resource.Attribute.StateFirst }, normalDrawable);
-            return statesListDrawable;
+            return new InsetDrawable(statesListDrawable, 0, 4, 0, 0);
         }
     }
 }
