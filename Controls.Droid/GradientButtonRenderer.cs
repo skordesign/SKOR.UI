@@ -30,7 +30,9 @@ namespace Skor.Controls.Droid
             this.button.HeightRequest = this.button.HeightRequest >= DEFAULT_HEIGHT_BUTTON ? this.button.HeightRequest : DEFAULT_HEIGHT_BUTTON;
             InitControls();
             RenderText();
-            InitStyleButton();
+
+            nButton.Background = CreateBackgroundForButton();
+
             nButton.Click += (s, ev) =>
             {
                 button.SendClicked();
@@ -39,6 +41,7 @@ namespace Skor.Controls.Droid
             {
                 button.SendLongClick();
             };
+            InitStyleButton();
             frame.AddView(nButton);
             SetNativeControl(this.frame);
         }
@@ -62,7 +65,6 @@ namespace Skor.Controls.Droid
         }
         private void InitStyleButton()
         {
-            nButton.Background = CreateBackgroundForButton();
             nButton.AddRipple(button.RippleColor.ToAndroid());
             nButton.Enabled = button.IsEnabled;
             if (!button.HasShadow)
@@ -73,15 +75,18 @@ namespace Skor.Controls.Droid
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
-            if (e.PropertyName == "IsEnabled")
+            if (e.PropertyName == nameof(button.IsEnabled))
             {
-                if (e.PropertyName == "IsEnabled")
-                {
-                    nButton.Enabled = button.IsEnabled;
-                }
+                nButton.Enabled = button.IsEnabled;
+            }
+            if (e.PropertyName == nameof(button.StartColor) || e.PropertyName == nameof(button.EndColor)
+                || e.PropertyName == nameof(button.CenterColor))
+            {
+                if(nButton!=null)
+                    nButton.Background = CreateBackgroundForButton();
             }
         }
-        Drawable CreateBackgroundForButton()
+        Drawable CreateBackgroundForButton(bool renderImage = true)
         {
             List<Drawable> drawables = new List<Drawable>();
             List<Drawable> drawablesDisabled = new List<Drawable>();
@@ -95,7 +100,7 @@ namespace Skor.Controls.Droid
                 button.CenterColor.ToAndroid(),
                 button.CornerRadius,
                 button.Angle.ToAndroid()));
-            if (button.Image != null && !string.IsNullOrEmpty(button.Image.File))
+            if (button.Image != null && !string.IsNullOrEmpty(button.Image.File) && renderImage)
             {
                 var bitmapDrawable = BackgroundExtension.CreateBackgroundBitmap(button.Image.File, (int)button.HeightRequest,
                     (int)button.WidthRequest, button.CornerRadius);

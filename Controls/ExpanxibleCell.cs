@@ -91,6 +91,7 @@ namespace Skor.Controls
         {
             if (TapMasterToShowDetail)
                 IsDetailShown = !IsDetailShown;
+            OnTapped();
         }
 
         private void RenderDetail()

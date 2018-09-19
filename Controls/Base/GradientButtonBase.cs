@@ -7,6 +7,13 @@ namespace Skor.Controls.Base
 {
     public class GradientButtonBase : Button
     {
+        public bool IsGradient
+        {
+            get
+            {
+                return StartColor != Color.White || EndColor != Color.White;
+            }
+        }
         public event EventHandler LongClicked;
         public static readonly BindableProperty HasShadowProperty = BindableProperty.Create(
       nameof(HasShadow),
@@ -23,7 +30,7 @@ namespace Skor.Controls.Base
        nameof(StartColor),
        typeof(Color),
        typeof(GradientButtonBase),
-       Color.Default);
+       Color.White);
         public Color StartColor
         {
             get { return (Color)GetValue(StartColorProperty); }
@@ -43,7 +50,7 @@ namespace Skor.Controls.Base
         nameof(EndColor),
         typeof(Color),
         typeof(GradientButtonBase),
-        Color.Default);
+        Color.White);
         public Color EndColor
         {
             get { return (Color)GetValue(EndColorProperty); }
@@ -53,7 +60,7 @@ namespace Skor.Controls.Base
         nameof(CenterColor),
         typeof(Color),
         typeof(GradientButtonBase),
-        Color.Transparent);
+        Color.White);
         public Color CenterColor
         {
             get { return (Color)GetValue(CenterColorProperty); }

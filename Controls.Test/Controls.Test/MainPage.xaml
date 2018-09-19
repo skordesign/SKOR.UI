@@ -132,13 +132,14 @@
                     </controls:GradientTextButton.BorderWidth>
                 </controls:GradientTextButton>
                 <controls:GradientButton Text="JShine"
-                                         RippleColor="#12c2e9"
+                                         Command="{Binding ChangeProperty}"
+                                         RippleColor="{Binding Ripple}"
                                          TextColor="White"
                                          FontSize="Medium"
                                          Image="test.jpg"
-                                         StartColor="#12c2e9"
-                                         CenterColor="#c471ed"
-                                         EndColor="#f64f59">
+                                         StartColor="{Binding Start}"
+                                         CenterColor="{Binding Center}"
+                                         EndColor="{Binding End}">
                     <controls:GradientButton.FontFamily>
                         <OnPlatform x:TypeArguments="x:String"
                                     WinPhone="/Assets/Fonts/Raleway-Light.ttf#Raleway"></OnPlatform>
@@ -163,10 +164,7 @@
                                          HorizontalOptions="FillAndExpand"
                                          HeightRequest="48"
                                          WidthRequest="100"
-                                         TextColor="White"
-                                         StartColor="#2980B9"
-                                         CenterColor="#6DD5FA"
-                                         EndColor="#FFFFFF" />
+                                         TextColor="White" />
                 <controls:GradientButton Text="Green and blue"
                                          Image="test.jpg"
                                          CornerRadius="24"

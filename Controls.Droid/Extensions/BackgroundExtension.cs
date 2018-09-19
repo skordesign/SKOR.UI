@@ -54,7 +54,7 @@ namespace Skor.Controls.Droid.Extensions
             gradientDrawable.SetOrientation(orientation);
             return gradientDrawable;
         }
-        public static Drawable CreateBackgroundBitmap(string image, int height, int width, float cornerRadius)
+        public static Drawable CreateBackgroundBitmap(string image, int height, int width, float cornerRadius, int alpha = 40)
         {
             var bitmap = Application.Context.Resources.GetBitmap(image);
             if (bitmap != null)
@@ -63,7 +63,7 @@ namespace Skor.Controls.Droid.Extensions
                 bitmap = Bitmap.CreateScaledBitmap(bitmap, width, height, false);
                 var dr = RoundedBitmapDrawableFactory.Create(Application.Context.Resources, bitmap);
                 dr.CornerRadius = cornerRadius;
-                dr.Mutate().SetAlpha(40);
+                dr.Mutate().SetAlpha(alpha);
                 return dr;
             }
             return null;
