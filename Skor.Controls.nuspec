@@ -34,8 +34,10 @@
       - Add GradientToggleButton (Android and UWP)
       - Add ExpanxibleCell (Android, iOS, UWP)
       - BindableStackLayout is done (Android, iOS, UWP)
+      [0.0.2-alpha2]
+      - Fix center color cannot ignore on iOS
     </releaseNotes>
-    <copyright>Copyright 2018</copyright>
+    <copyright>Copyright 2019</copyright>
     <tags>Skor XamUI Xamarin.Forms Controls</tags>
     <dependencies>
       <dependency id="Xamarin.Forms" version="3.0.0.482510" />
