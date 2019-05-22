@@ -12,7 +12,7 @@ namespace Skor.Controls.iOS.Extensions
            UIColor centerColor, CGPoint[] direction = null)
         {
             var gradientLayer = new CAGradientLayer();
-            if (centerColor != Color.Transparent.ToUIColor())
+            if (centerColor.ToColor() != Color.Transparent)
             {
                 gradientLayer.Colors = new[] { startColor.CGColor,centerColor.CGColor, endColor.CGColor };
             }
