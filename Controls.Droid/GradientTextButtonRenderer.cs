@@ -34,6 +34,9 @@ namespace Skor.Controls.Droid
         protected override void OnElementChanged(ElementChangedEventArgs<global::Skor.Controls.GradientTextButton> e)
         {
             base.OnElementChanged(e);
+
+            if (e.NewElement == null) return;
+
             this.button = e.NewElement as global::Skor.Controls.GradientTextButton;
             this.backgroundColor = this.button.BackgroundColor;
             this.button.BackgroundColor = Xamarin.Forms.Color.Transparent;

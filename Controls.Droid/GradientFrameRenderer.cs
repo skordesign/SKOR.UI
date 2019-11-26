@@ -20,7 +20,7 @@ namespace Skor.Controls.Droid
         protected override void OnElementChanged(ElementChangedEventArgs<Frame> e)
         {
             base.OnElementChanged(e);
-            if (Control != null)
+            if (Control != null && e.NewElement != null)
             {
                 grid = e.NewElement as GradientFrame;
             }
