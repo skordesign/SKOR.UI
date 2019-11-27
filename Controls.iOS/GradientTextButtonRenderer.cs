@@ -25,6 +25,9 @@ namespace Skor.Controls.iOS
         protected override void OnElementChanged(ElementChangedEventArgs<GradientTextButton> e)
         {
             base.OnElementChanged(e);
+
+            if (e.NewElement == null) return;
+
             button = e.NewElement as GradientTextButton;
             nButton = new UIButton(UIButtonType.System);
             nButton.TranslatesAutoresizingMaskIntoConstraints = true;
@@ -69,7 +72,6 @@ namespace Skor.Controls.iOS
             gradient.Mask = shape;
             
             nButton.Layer.AddSublayer(gradient);
-
 
             var gradientText = new CAGradientLayer();
             gradientText.StartPoint = direction[0];

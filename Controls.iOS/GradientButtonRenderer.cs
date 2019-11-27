@@ -24,6 +24,9 @@ namespace Skor.Controls.iOS
         protected override void OnElementChanged(ElementChangedEventArgs<GradientButton> e)
         {
             base.OnElementChanged(e);
+
+            if (e.NewElement == null) return;
+
             button = e.NewElement as GradientButton;
             nButton = new UIButton(UIButtonType.System);
             nButton.TranslatesAutoresizingMaskIntoConstraints = true;
