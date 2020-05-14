@@ -26,6 +26,9 @@ namespace Skor.Controls.Droid
         protected override void OnElementChanged(ElementChangedEventArgs<global::Skor.Controls.GradientButton> e)
         {
             base.OnElementChanged(e);
+
+            if (e.NewElement == null) return;
+
             this.button = e.NewElement as global::Skor.Controls.GradientButton;
             this.button.HeightRequest = this.button.HeightRequest >= DEFAULT_HEIGHT_BUTTON ? this.button.HeightRequest : DEFAULT_HEIGHT_BUTTON;
             InitControls();

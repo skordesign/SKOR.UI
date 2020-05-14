@@ -27,7 +27,10 @@ namespace Skor.Controls.iOS
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
-            if (e.PropertyName == "Width" || e.PropertyName == "Height")
+            if (e.PropertyName == "Width" || e.PropertyName == "Height"
+                || e.PropertyName == GradientFrame.StartColorProperty.PropertyName
+                || e.PropertyName == GradientFrame.EndColorProperty.PropertyName
+                || e.PropertyName == GradientFrame.CenterColorProperty.PropertyName)
             {
                 Layer.BackgroundColor = UIColor.Clear.CGColor;
                 Layer.BorderColor = UIColor.Clear.CGColor;
